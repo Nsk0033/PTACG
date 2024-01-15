@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
 
     private Character character;
     private CharacterController controller;
-    private Collider2D collider2D;
+    new Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
     private EnemyHealth enemyHealth;
     private BossBaseShot bossBaseShot;

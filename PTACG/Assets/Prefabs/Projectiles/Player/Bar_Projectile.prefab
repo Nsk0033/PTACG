@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   lifeTime: 2
   impactPS: {fileID: 61970152770529391}
 --- !u!1001 &589882574371275178

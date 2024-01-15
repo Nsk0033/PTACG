@@ -11,7 +11,7 @@ public class LevelManager : Singleton<LevelManager>
     public Transform Boss { get; set; }
     public Transform Player { get; set; }
     
-    private void Awake()
+    protected override void Awake()
     {
         Boss = GameObject.Find("Enemy Boss/Boss").transform;
         Player = playableCharacter.transform;

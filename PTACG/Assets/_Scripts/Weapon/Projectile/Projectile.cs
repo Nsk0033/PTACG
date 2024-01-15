@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     
     // Internal
     private Rigidbody2D myRigidbody2D;
-    private Collider2D collider2D;
+    new Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
 	private Vector2 movement;
 	private bool canMove;

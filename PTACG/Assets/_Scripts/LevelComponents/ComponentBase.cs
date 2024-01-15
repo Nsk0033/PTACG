@@ -15,7 +15,7 @@ public class ComponentBase : MonoBehaviour
     private Health health;  
     private SpriteRenderer spriteRenderer; 
     private JarReward jarReward;
-    private Collider2D collider2D;
+    new Collider2D collider2D;
 
     private void Start()
     {

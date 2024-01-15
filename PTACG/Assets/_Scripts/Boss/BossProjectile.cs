@@ -12,7 +12,7 @@ public class BossProjectile : MonoBehaviour
 	private float acceleration;
 
     private SpriteRenderer spriteRenderer;
-    private Collider2D collider2D;
+    new Collider2D collider2D;
     private bool canMove;
     
     private void Awake()
