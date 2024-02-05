@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ShootingState
+{
+    Ready,
+    Cooldown
+}
+
 public class Weapon : MonoBehaviour
 { 
     [Header("Name")] 
     [SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
-    [SerializeField] private float timeBtwShots = 0.5f;
+    [SerializeField] private float timeBtwShots = 0.8f;
 
     [Header("Weapon")] 
     [SerializeField] private bool useMagazine = true;
@@ -52,6 +58,8 @@ public class Weapon : MonoBehaviour
     private CharacterController controller; // Because we need to know the character is facing which side for RECOIL
     protected Animator animator;
     private readonly int weaponUseParameter = Animator.StringToHash("WeaponUse");
+	private bool isCooldown;
+
 
     public ObjectPooler WeaponPooler { get; set; } // ---- NEW
 
@@ -60,10 +68,11 @@ public class Weapon : MonoBehaviour
         WeaponAmmo = GetComponent<WeaponAmmo>();
         WeaponAim = GetComponent<WeaponAim>();       
         animator = GetComponent<Animator>();
-	  WeaponPooler = GetComponent<ObjectPooler>();  // ---- NEW
+	    WeaponPooler = GetComponent<ObjectPooler>();  // ---- NEW
+		CanShoot = true;
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         WeaponCanShoot();
         RotateWeapon();   
@@ -113,6 +122,7 @@ public class Weapon : MonoBehaviour
     // Makes our weapon start shooting
     protected virtual void RequestShot()
     {
+		Debug.Log("RequestShot method called");
         if (!CanShoot)
         {
             return;
@@ -147,12 +157,24 @@ public class Weapon : MonoBehaviour
     // Controls the next time we can shoot
     protected virtual void WeaponCanShoot()
     {
+		if(!CanShoot)
+		{
+			if(isCooldown)
+			{
+				nextShotTime = Time.time + timeBtwShots;
+				Debug.Log("Cooldown!");
+				isCooldown = false;
+			}
+			
+		}
         if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
-        {
-            CanShoot = true;
-            nextShotTime = Time.time + timeBtwShots;
-        }
+		{	
+			CanShoot = true;
+			isCooldown = true;
+			Debug.Log("Can Shoot");
+		}
     }
+
 
     // Reference the owner of this Weapon
     public void SetOwner(Character owner)

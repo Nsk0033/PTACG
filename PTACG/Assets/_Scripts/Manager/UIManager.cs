@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI currentShieldTMP;
 
     [Header("Weapon")]
-    [SerializeField] private TextMeshProUGUI currentAmmoTMP;
+    //[SerializeField] private TextMeshProUGUI currentAmmoTMP;
     [SerializeField] private Image weaponImage;
 
     [Header("Text")] 
@@ -81,7 +81,7 @@ public class UIManager : Singleton<UIManager>
         }
 
         // Update Ammo
-        currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;    
+        //currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;    
 
         // Update Coins
         coinsTMP.text = CoinManager.Instance.Coins.ToString(); 

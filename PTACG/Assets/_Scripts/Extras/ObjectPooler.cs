@@ -15,7 +15,7 @@ public class ObjectPooler : MonoBehaviour
     private void Start()
     {
         //parentObject = new GameObject("Pool");
-	  PoolContainer = new GameObject($"Pool - {objectPrefab.name}"); // --- NEW
+	    PoolContainer = new GameObject($"Pool - {objectPrefab.name}"); // --- NEW
         Refill();
     }
     
@@ -56,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
         GameObject newObject = Instantiate(objectPrefab);
         newObject.SetActive(false);
         //newObject.transform.parent = parentObject.transform;
-	  newObject.transform.parent = PoolContainer.transform; // --- NEW
+	    newObject.transform.parent = PoolContainer.transform; // --- NEW
         
         pooledObjects.Add(newObject);
         return newObject;

@@ -107,7 +107,7 @@ public class CharacterWeapon : CharacterComponents
             CurrentWeapon.WeaponAmmo.SaveAmmo();
             WeaponAim.DestroyReticle();       // Each weapon has its own Reticle component
             // Destroy(GameObject.Find("Pool")); // --- DELETE THIS
-		Destroy(CurrentWeapon.WeaponPooler.PoolContainer); // ---- NEW
+			Destroy(CurrentWeapon.WeaponPooler.PoolContainer); // ---- NEW
             Destroy(CurrentWeapon.gameObject);
         }
 

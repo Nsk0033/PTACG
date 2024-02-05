@@ -12,8 +12,15 @@ public class LevelManager : Singleton<LevelManager>
     public Transform Player { get; set; }
     
     protected override void Awake()
-    {
-        Boss = GameObject.Find("Enemy Boss/Boss").transform;
+    { 
+		if (Boss != null)
+		{
+			Boss = GameObject.Find("Enemy Boss/Boss").transform;
+		}
+		else
+		{
+			return;
+		}
         Player = playableCharacter.transform;
         Camera2D.Instance.Target = playableCharacter.transform;
 	}

@@ -24,9 +24,9 @@ public class MeleeWeapon : Weapon
         StartCoroutine(Attack());
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         FlipMeeleWeapon();
     }
 
