@@ -9,6 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263945176779718123}
+  - component: {fileID: 3710869421897844683}
+  - component: {fileID: 3502630217873647047}
+  - component: {fileID: -4576363468753656406}
+  - component: {fileID: -7131988953868529570}
+  - component: {fileID: 2132415708522133589}
   m_Layer: 0
   m_Name: Weapon_Staff
   m_TagString: Untagged
@@ -32,6 +37,89 @@ Transform:
   - {fileID: 6867980298442191638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3710869421897844683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747742107403675160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5f281fcaabca0428143db8687b7dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Staff
+  timeBtwShots: 1.5
+  useMagazine: 0
+  magazineSize: 30
+  autoReload: 0
+  useRecoil: 0
+  recoilForce: 30
+  muzzlePS: {fileID: 645007150280059333, guid: fa11c94b30596ef419f91d47d8e813aa, type: 3}
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}
+  projectileSpread: {x: 0, y: 0, z: 0}
+--- !u!95 &3502630217873647047
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747742107403675160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 488107d252b02f449a375f92c1f9a121, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4576363468753656406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747742107403675160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e2a2e6eb2e3964b9fbb64d4f94bd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7131988953868529570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747742107403675160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c39f4c3c97cb4bb3b94e36f35e883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticlePrefab: {fileID: 7730399938022138608, guid: a2dbda1d970216949b09b42873a56f25, type: 3}
+--- !u!114 &2132415708522133589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747742107403675160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecd71b3c92e631429110af5a995ab46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 8482868708473366747, guid: e6e6c1efcca78424abfdd63e1fcd5147, type: 3}
+  poolSize: 20
+  poolCanExpand: 1
 --- !u!1 &2054818139954012824
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,13 +145,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054818139954012824}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.3778408, w: 0.9258706}
-  m_LocalPosition: {x: -0.032, y: 0.998, z: 0}
-  m_LocalScale: {x: 4.85, y: 4.85, z: 4.85}
+  m_LocalRotation: {x: 0, y: 0, z: 0.20013751, w: 0.97976786}
+  m_LocalPosition: {x: 0.48, y: 0.2, z: 0}
+  m_LocalScale: {x: 1.69, y: 1.69, z: 1.69}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1263945176779718123}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 44.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.09}
 --- !u!212 &4634018328927372717
 SpriteRenderer:
   m_ObjectHideFlags: 0
