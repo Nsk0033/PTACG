@@ -143,7 +143,7 @@ MonoBehaviour:
   muzzlePS: {fileID: 645007150280059333, guid: fa11c94b30596ef419f91d47d8e813aa, type: 3}
   projectileSpawnPosition: {x: 0.9, y: 0, z: 0}
   projectileSpread: {x: 0, y: 0, z: 0}
-  projectileSpreadAngle: 3
+  projectileSpreadAngle: 12
 --- !u!114 &6233939949063166763
 MonoBehaviour:
   m_ObjectHideFlags: 0

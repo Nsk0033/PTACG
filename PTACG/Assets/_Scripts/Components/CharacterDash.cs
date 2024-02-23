@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CharacterDash : CharacterComponents    
 {
-	[SerializeField] private float dashDistance = 3f;
-	[SerializeField] private float dashDuration = 0.1f;
+    [SerializeField] private float dashDistance = 3f;
+    [SerializeField] private float dashDuration = 0.1f;
+    [SerializeField] private float projectileSpawnInterval = 0.1f; // Interval for spawning projectiles
+    [SerializeField] private GameObject projectilePrefab; // Prefab of the projectile to spawn
 
     private bool isDashing;
     private float dashTimer;
@@ -13,13 +15,21 @@ public class CharacterDash : CharacterComponents
     private Vector2 dashDestination;
     private Vector2 newPosition;
 
+	[SerializeField] private CharacterWeapon dashCharacterWeapon;
+	
+    protected override void Start()
+    {
+        base.Start();
+        characterWeapon = GetComponent<CharacterWeapon>(); // Get the CharacterWeapon component
+    }
+
     protected override void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Dash();
         }
-	}
+    }
 
     protected override void HandleAbility()
     {
@@ -31,6 +41,13 @@ public class CharacterDash : CharacterComponents
             {
                 newPosition = Vector2.Lerp(dashOrigin, dashDestination, dashTimer / dashDuration);
                 controller.MovePosition(newPosition);
+
+                // Check if the current weapon is YamatoWeapon and spawn projectiles accordingly
+                if (dashCharacterWeapon != null && dashCharacterWeapon.CurrentWeapon != null && dashCharacterWeapon.CurrentWeapon.gameObject.CompareTag("YamatoWeapon"))
+                {
+                    SpawnProjectiles();
+                }
+
                 dashTimer += Time.deltaTime;
             }
             else
@@ -48,7 +65,6 @@ public class CharacterDash : CharacterComponents
         dashOrigin = transform.position;
 
         dashDestination = transform.position + (Vector3) controller.CurrentMovement.normalized * dashDistance;
-		//SoundManager.Instance.PlaySound(SoundManager.Instance.DashClip, 0.6f); play sound
     }
 
     private void StopDash()
@@ -56,4 +72,17 @@ public class CharacterDash : CharacterComponents
         isDashing = false;
         controller.NormalMovement = true;
     }   
+
+    private void SpawnProjectiles()
+    {
+		// Spawn projectiles at regular intervals during the dash
+		if (Time.time % projectileSpawnInterval < Time.deltaTime)
+		{
+			float randomZ = Random.Range(0f, 360f); // Random Z-axis rotation in degrees
+			Vector3 spawnPosition = transform.position + new Vector3(0f, 0f, randomZ); // Calculate spawn position
+
+			Instantiate(projectilePrefab, spawnPosition, Quaternion.Euler(0f, 0f, randomZ));
+			// You may need to adjust the position and rotation of the spawned projectile as needed.
+		}
+	}
 }

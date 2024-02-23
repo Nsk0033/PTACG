@@ -90035,6 +90035,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &144482827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.821602
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.26439
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062672675339390490, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+      propertyPath: m_Name
+      value: YamatoDodgeParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
 --- !u!1 &154361375
 GameObject:
   m_ObjectHideFlags: 0
@@ -112984,6 +113041,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDistance: 3
   dashDuration: 0.1
+  projectileSpawnInterval: 0.02
+  projectilePrefab: {fileID: 5062672675339390490, guid: b2f99ea0f29eb4246b5b08bdfbbad25f, type: 3}
+  dashCharacterWeapon: {fileID: 1811728462}
 --- !u!114 &1811728459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113080,7 +113140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f6bed47d99814f85cf5edd72eb055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 3710869421897844683, guid: 70a241e08a4949140a7d096eec8f2c51, type: 3}
+  weaponToUse: {fileID: 5301248613224042060, guid: c4e3d9e36daed6841a8d58ea3678fd36, type: 3}
   weaponHolderPosition: {fileID: 2085269937}
 --- !u!114 &1811728463
 MonoBehaviour:
@@ -115591,6 +115651,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e6c1efcca78424abfdd63e1fcd5147, type: 3}
+--- !u!1001 &1062988840835418590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.437854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.939497
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591695267146584204, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062672675339390490, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+      propertyPath: m_Name
+      value: YamatoSlashParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -115627,3 +115744,5 @@ SceneRoots:
   - {fileID: 1856406481}
   - {fileID: 154361378}
   - {fileID: 307881553553428518}
+  - {fileID: 1062988840835418590}
+  - {fileID: 144482827}

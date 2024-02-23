@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30750150348302434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalRotation: {x: 0, y: 0, z: 0.90355974, w: 0.4284622}
+  m_LocalPosition: {x: 0.186, y: -0.285, z: 0}
+  m_LocalScale: {x: 1.3, y: -1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5776840056669396213}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 129.26}
 --- !u!212 &3945875593088098736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,9 +93,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5776840056669396213}
+  - component: {fileID: 5301248613224042060}
+  - component: {fileID: -4244298815957761312}
+  - component: {fileID: 5521479407158445018}
+  - component: {fileID: 1974426620227336687}
+  - component: {fileID: -1760017217957487229}
   m_Layer: 0
   m_Name: Weapon_Yamato
-  m_TagString: Untagged
+  m_TagString: YamatoWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,3 +121,87 @@ Transform:
   - {fileID: 5172230871226182123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5301248613224042060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212879425333873244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8e9c2b6e451ad42b29f90491ad958f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Yamato
+  timeBtwShots: 0.1
+  useMagazine: 0
+  magazineSize: 30
+  autoReload: 0
+  useRecoil: 0
+  recoilForce: 0
+  muzzlePS: {fileID: 645007150280059333, guid: fa11c94b30596ef419f91d47d8e813aa, type: 3}
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}
+  projectileSpread: {x: 0, y: 0, z: 0}
+  swordSprite: {fileID: 30750150348302434}
+--- !u!114 &-4244298815957761312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212879425333873244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e2a2e6eb2e3964b9fbb64d4f94bd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5521479407158445018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212879425333873244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c39f4c3c97cb4bb3b94e36f35e883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticlePrefab: {fileID: 7730399938022138608, guid: a2dbda1d970216949b09b42873a56f25, type: 3}
+--- !u!114 &1974426620227336687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212879425333873244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecd71b3c92e631429110af5a995ab46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 5062672675339390490, guid: a4d2645b55ac8ec4f9aece1d34a75492, type: 3}
+  poolSize: 30
+  poolCanExpand: 1
+--- !u!95 &-1760017217957487229
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212879425333873244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 488107d252b02f449a375f92c1f9a121, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

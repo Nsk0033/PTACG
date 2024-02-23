@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - YamatoWeapon
   layers:
   - Default
   - TransparentFX

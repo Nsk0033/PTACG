@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5635839262426452501}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.38869175, w: 0.9213679}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.568, y: 0.423, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4903776169099993291}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.746}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &4897964788372460310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,6 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903776169099993291}
+  - component: {fileID: -8643375699933634830}
+  - component: {fileID: 8716297398824295173}
+  - component: {fileID: -435295812864835628}
+  - component: {fileID: 5938906926841848942}
+  - component: {fileID: -591060290897042147}
   m_Layer: 0
   m_Name: Basic_Sword
   m_TagString: Untagged
@@ -116,3 +121,87 @@ Transform:
   - {fileID: 2969933046060024523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8643375699933634830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664058788316263974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e2a2e6eb2e3964b9fbb64d4f94bd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8716297398824295173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664058788316263974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c39f4c3c97cb4bb3b94e36f35e883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticlePrefab: {fileID: 7730399938022138608, guid: a2dbda1d970216949b09b42873a56f25, type: 3}
+--- !u!114 &-435295812864835628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664058788316263974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecd71b3c92e631429110af5a995ab46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 5987030214011261635, guid: c8a87be1f768c7841b6871f560574c07, type: 3}
+  poolSize: 10
+  poolCanExpand: 1
+--- !u!95 &5938906926841848942
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664058788316263974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 488107d252b02f449a375f92c1f9a121, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-591060290897042147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664058788316263974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605121ebac47cbe41ae86d5d85569206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Sword
+  timeBtwShots: 0.7
+  useMagazine: 0
+  magazineSize: 30
+  autoReload: 0
+  useRecoil: 0
+  recoilForce: 30
+  muzzlePS: {fileID: 645007150280059333, guid: fa11c94b30596ef419f91d47d8e813aa, type: 3}
+  projectileSpawnPosition: {x: 1, y: 0, z: 0}
+  projectileSpread: {x: 0, y: 0, z: 0}
+  swordSprite: {fileID: 5635839262426452501}
