@@ -113140,8 +113140,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f6bed47d99814f85cf5edd72eb055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 5301248613224042060, guid: c4e3d9e36daed6841a8d58ea3678fd36, type: 3}
+  weaponToUse: {fileID: 3710869421897844683, guid: 70a241e08a4949140a7d096eec8f2c51, type: 3}
   weaponHolderPosition: {fileID: 2085269937}
+  BasicBow: {fileID: -3600036530847762954, guid: 05e338e32eaf3484f97580bd92b226eb, type: 3}
+  BasicSword: {fileID: -591060290897042147, guid: c8ffb2e91c6c18a438c2d4936d6c8110, type: 3}
+  UpgradeBow: {fileID: 2528265436504623213, guid: 84ada5869f6c47440852afe2d5f78a18, type: 3}
+  UpgradeSword: {fileID: 6776706838995804923, guid: 99fb04e7e1e3f6c4b911eae869abb372, type: 3}
+  Staff: {fileID: 3710869421897844683, guid: 70a241e08a4949140a7d096eec8f2c51, type: 3}
+  Yamato: {fileID: 5301248613224042060, guid: c4e3d9e36daed6841a8d58ea3678fd36, type: 3}
+  isBowUpgraded: 0
+  isSwordUpgraded: 0
+  isStaffOwned: 0
+  isYamatoOwned: 0
 --- !u!114 &1811728463
 MonoBehaviour:
   m_ObjectHideFlags: 0

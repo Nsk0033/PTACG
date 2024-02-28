@@ -10,6 +10,17 @@ public class CharacterWeapon : CharacterComponents
     [Header("Weapon Settings")]
     [SerializeField] private Weapon weaponToUse;
     [SerializeField] private Transform weaponHolderPosition;
+	[SerializeField] private Weapon BasicBow;
+	[SerializeField] private Weapon BasicSword;
+	[SerializeField] private Weapon UpgradeBow;
+	[SerializeField] private Weapon UpgradeSword;
+	[SerializeField] private Weapon Staff;
+	[SerializeField] private Weapon Yamato;
+	
+	[SerializeField] private bool isBowUpgraded;
+	[SerializeField] private bool isSwordUpgraded;
+	[SerializeField] private bool isStaffOwned;
+	[SerializeField] private bool isYamatoOwned;
 
     // Reference of the Weapon we are using
     public Weapon CurrentWeapon  { get; set; }
@@ -45,14 +56,50 @@ public class CharacterWeapon : CharacterComponents
                 Reload();
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
-            {
-                EquipWeapon(weaponToUse, weaponHolderPosition);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				if(!isBowUpgraded)
+				{
+					EquipWeapon(BasicBow, weaponHolderPosition);
+				}	
+                else
+				{
+					EquipWeapon(UpgradeBow, weaponHolderPosition);
+				}
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                EquipWeapon(SecondaryWeapon, weaponHolderPosition);
+                if(!isSwordUpgraded)
+				{
+					EquipWeapon(BasicSword, weaponHolderPosition);
+				}	
+                else
+				{
+					EquipWeapon(UpgradeSword, weaponHolderPosition);
+				}
+            }
+			if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if(isStaffOwned)
+				{	
+					EquipWeapon(Staff, weaponHolderPosition);
+				}
+				else
+				{
+					EquipWeapon(Yamato, weaponHolderPosition);
+				}
+            }
+			if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if(isYamatoOwned && isStaffOwned)
+				{	
+					EquipWeapon(Yamato, weaponHolderPosition);
+				}
+				else
+				{
+					return;
+				}
             }
         }   
     }
