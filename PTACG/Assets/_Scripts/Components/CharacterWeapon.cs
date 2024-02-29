@@ -8,7 +8,7 @@ public class CharacterWeapon : CharacterComponents
     public static Action OnStartShooting;
 	
     [Header("Weapon Settings")]
-    [SerializeField] private Weapon weaponToUse;
+    //[SerializeField] private Weapon weaponToUse;
     [SerializeField] private Transform weaponHolderPosition;
 	[SerializeField] private Weapon BasicBow;
 	[SerializeField] private Weapon BasicSword;
@@ -34,7 +34,14 @@ public class CharacterWeapon : CharacterComponents
     protected override void Start()
     {
         base.Start();
-        EquipWeapon(weaponToUse, weaponHolderPosition);
+        if(!isBowUpgraded)
+		{
+			EquipWeapon(BasicBow, weaponHolderPosition);
+		}	
+		else
+		{
+			EquipWeapon(UpgradeBow, weaponHolderPosition);
+		}
     }
 
     protected override void HandleInput()
@@ -87,7 +94,10 @@ public class CharacterWeapon : CharacterComponents
 				}
 				else
 				{
-					EquipWeapon(Yamato, weaponHolderPosition);
+					if(isYamatoOwned)
+					{
+						EquipWeapon(Yamato, weaponHolderPosition);
+					}
 				}
             }
 			if (Input.GetKeyDown(KeyCode.Alpha4))

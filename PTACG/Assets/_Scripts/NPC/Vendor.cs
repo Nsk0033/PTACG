@@ -12,7 +12,7 @@ public class Vendor : MonoBehaviour
 	[SerializeField] private GameObject shopPanel;
 
     [Header("Items")]
-    [SerializeField] private VendorItem weaponItem;
+    //[SerializeField] private VendorItem weaponItem;
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
@@ -23,7 +23,7 @@ public class Vendor : MonoBehaviour
     {
         if (canOpenShop)
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 shopPanel.SetActive(true);
                 popUpPanel.SetActive(false);
@@ -32,26 +32,18 @@ public class Vendor : MonoBehaviour
 
         if (shopPanel.activeInHierarchy)
         {
-            BuyItems();
+            //BuyItems();
         }
     }
 
     private void BuyItems()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (CoinManager.Instance.Coins >= weaponItem.Cost)
-            {
-                characterWeapon.SecondaryWeapon = weaponItem.WeaponToSell;
-                ProductBought(weaponItem.Cost);
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.N))
         {
             if (CoinManager.Instance.Coins >= shieldItem.Cost)
             {
-                shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
+                //shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
                 ProductBought(shieldItem.Cost);
             }
         }
@@ -60,7 +52,7 @@ public class Vendor : MonoBehaviour
         {
             if (CoinManager.Instance.Coins >= healthItem.Cost)
             {
-                healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
+                //healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
                 ProductBought(healthItem.Cost);
             }
         }
