@@ -35,8 +35,26 @@ public class Vendor : MonoBehaviour
             //BuyItems();
         }
     }
-
-    private void BuyItems()
+	
+	public void BuyHealthPotion()
+	{
+		healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
+        ProductBought(healthItem.Cost);
+	}
+	
+	public void BuySheildPotion()
+	{
+		shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
+        ProductBought(shieldItem.Cost);
+	}
+	
+	public void BuyGacha()
+	{
+		//gacha script here
+		Debug.Log("Gacha Start!");
+	}
+	
+    /*private void BuyItems()
     {
 
         if (Input.GetKeyDown(KeyCode.N))
@@ -56,7 +74,7 @@ public class Vendor : MonoBehaviour
                 ProductBought(healthItem.Cost);
             }
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -81,7 +99,6 @@ public class Vendor : MonoBehaviour
 
     private void ProductBought(int amount)
     {
-        shopPanel.SetActive(false);
         CoinManager.Instance.RemoveCoins(amount);
     }
 }
