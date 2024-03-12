@@ -16,7 +16,11 @@ public class Vendor : MonoBehaviour
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
-	private bool canOpenShop;
+    [Header("Conversation Panel")]
+    [SerializeField] private GameObject VendorConversationPanel;
+    
+
+    public bool canOpenShop;
     private CharacterWeapon characterWeapon;
 
     private void Update()
