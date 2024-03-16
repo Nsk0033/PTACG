@@ -17,9 +17,9 @@ TagManager:
   - Map
   - Enemy
   - Minimap
-  - 
-  - 
-  - 
+  - GeneralMap
+  - EnemyProjectile
+  - PlayerProjectile
   - 
   - 
   - 
