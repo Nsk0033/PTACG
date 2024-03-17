@@ -21,6 +21,21 @@ public class PauseManager : MonoBehaviour
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1; // Pause or resume time based on the isPaused flag
 		pauseMenu.SetActive(isPaused);
+		
+		AudioSource[] audios = FindObjectsOfType<AudioSource>();
+		
+		foreach (AudioSource a in audios)
+		{
+			if(!isPaused)
+			{
+				a.Play();
+			}
+			else
+			{
+				a.Pause();
+			}
+		}
+		
     }
 	
 	public void GoToMainMenu()
