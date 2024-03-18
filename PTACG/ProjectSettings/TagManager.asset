@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Bullet
   - YamatoWeapon
+  - Arrow
+  - Melee
+  - BiggerMelee
+  - DemonQuest
+  - InTheAbyss
+  - NskBoss
   layers:
   - Default
   - TransparentFX

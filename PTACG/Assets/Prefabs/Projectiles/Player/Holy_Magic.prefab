@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4864750173621174180}
   - component: {fileID: 1757157169048768365}
   - component: {fileID: 7913471173127219056}
-  m_Layer: 0
+  - component: {fileID: -4224366138093990027}
+  m_Layer: 12
   m_Name: Holy_Magic
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -135,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 213428311
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b62159c1e5fa0d34bb710395d6dfff68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -203,3 +204,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.008533895, y: -0}
   m_Size: {x: 0.62199223, y: 0.62199223}
   m_Direction: 0
+--- !u!114 &-4224366138093990027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482868708473366747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c41586f97c7f1948ad9b18c3f7a7760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 1

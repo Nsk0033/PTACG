@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2082478011804824511}
   - component: {fileID: 3020961529099083852}
   - component: {fileID: 7624262063107386046}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BiggerSwordSlashParticle
-  m_TagString: Bullet
+  m_TagString: BiggerMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 213428311
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 24b531111afc77e4ab25376da044d288, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class Lvl4BossEnemyHealth : MonoBehaviour
 {
     [SerializeField] private GameObject enemyHealthBarPrefab;
     [SerializeField] private Vector3 offSet = new Vector3(0f, 1f, 0f);
@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int yamatoDamage = 1;
 	
     
-    private Health enemyHealth;
+    private Lvl4BossHealth enemyHealth;
     private Image enemyHealthBar;
     private GameObject enemyBar;
     
@@ -24,12 +24,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        enemyHealth = GetComponent<Health>();
+        enemyHealth = GetComponent<Lvl4BossHealth>();
         if (enemyHealthBarPrefab != null)
         {
             enemyBar = Instantiate(enemyHealthBarPrefab, transform.position + offSet, Quaternion.identity);
             enemyBar.transform.parent = transform;
-            enemyHealthBar = enemyBar.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>();
+            //enemyHealthBar = enemyBar.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>();
         }
     }
 

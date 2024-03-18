@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Lvl4BossHealth : MonoBehaviour
 {   
     public static Action OnBossDead;
  
@@ -186,7 +186,7 @@ public class Health : MonoBehaviour
         // Update Boss health
         if (bossBaseShot != null && character.CharacterType == Character.CharacterTypes.AI)
         {
-            UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
+            Lvl4UIManager.Instance.UpdateBossHealth(gameObject.tag, CurrentHealth, maxHealth);
         }  
       
         // Update Player health

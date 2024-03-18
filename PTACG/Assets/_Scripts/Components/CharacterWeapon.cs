@@ -175,8 +175,15 @@ public class CharacterWeapon : CharacterComponents
 
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
-            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);                
-            UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+			if(Lvl4UIManager.Instance != null)
+			{
+				Lvl4UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);                
+				Lvl4UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+			}
+            else if(UIManager.Instance != null)
+			{
+				UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+			}
         }
     }
 }

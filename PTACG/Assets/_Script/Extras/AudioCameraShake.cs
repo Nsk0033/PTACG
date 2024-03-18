@@ -14,7 +14,7 @@ public class AudioCameraShake : MonoBehaviour
     void Update()
     {
         float loudness = detector.GetLoudnessFromAudioClip(source.timeSamples, source.clip);
-		Debug.Log(loudness);
+		//Debug.Log(loudness);
 		if(loudness > gap)
 		{
 			CameraShakerHandler.Shake(shakeData);
