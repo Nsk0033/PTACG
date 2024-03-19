@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
     // Returns the current health of this character
     public float CurrentShield { get; set; }
+    public bool isShieldBroken { get; set; }
     
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class Health : MonoBehaviour
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
+        isShieldBroken = shieldBroken;
 
         if (character != null)
         {
@@ -65,6 +67,7 @@ public class Health : MonoBehaviour
         {
             TakeDamage(1);
         }
+        Debug.Log("health script: " + shieldBroken);
     }
 
     // Take the amount of damage we pass in parameters
