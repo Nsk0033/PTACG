@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
  
     [Header("Health")]
     [SerializeField] private float initialHealth = 10f;
-    [SerializeField] private float maxHealth = 10f;
+    public float maxHealth = 10f;
 
     [Header("Shield")] 
     [SerializeField] private float initialShield = 5f;
@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool destroyObject;
 	[SerializeField] private float damageCooldown = 0.75f; // Cooldown period after taking damage
 	[SerializeField] private bool canTakeDamage = true; // Flag to control if the player can take damage
+	[SerializeField] private float timeToDestroy = 2f;
 
     private Character character;
     private CharacterController controller;
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private EnemyHealth enemyHealth;
     private BossBaseShot bossBaseShot;
+	
 
     private bool isPlayer;
     private bool shieldBroken;
@@ -37,22 +39,20 @@ public class Health : MonoBehaviour
 
     // Returns the current health of this character
     public float CurrentShield { get; set; }
-    //public bool isShieldBroken { get; set; }
-    public bool IsShieldBroken => shieldBroken;
+    public bool isShieldBroken { get; set; }
     
     private void Awake()
     {
         character = GetComponent<Character>();
         controller = GetComponent<CharacterController>();
-        collider2D = GetComponent<Collider2D>();    
-        enemyHealth = GetComponent<EnemyHealth>();
+        collider2D = GetComponent<Collider2D>();      
+        enemyHealth = GetComponent<EnemyHealth>();  
         bossBaseShot = GetComponent<BossBaseShot>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
-        //isShieldBroken = shieldBroken;
 
         if (character != null)
         {
@@ -66,9 +66,8 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TakeDamage(1);
+            TakeDamage(5);
         }
-        Debug.Log("health script: " + shieldBroken);
     }
 
     // Take the amount of damage we pass in parameters
@@ -130,7 +129,8 @@ public class Health : MonoBehaviour
 
         if (bossBaseShot != null)
         {
-            OnBossDead?.Invoke();
+			Invoke("DisableAfterTime",timeToDestroy);
+			
         }
 
         if (destroyObject)
@@ -138,6 +138,11 @@ public class Health : MonoBehaviour
             DestroyObject();
         }
     }
+	
+	private void DisableAfterTime()
+	{
+		gameObject.SetActive(false);
+	}
     
     // Revive this game object    
     public void Revive()
@@ -190,13 +195,30 @@ public class Health : MonoBehaviour
         // Update Boss health
         if (bossBaseShot != null && character.CharacterType == Character.CharacterTypes.AI)
         {
-            UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
-        }  
+			if(Lvl4UIManager.Instance != null)
+			{
+				Lvl4UIManager.Instance.UpdateBossHealth(gameObject.tag, CurrentHealth, maxHealth);
+			}
+         
+			else if(UIManager.Instance != null)
+			{
+				UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
+			}
+        }
       
         // Update Player health
         if (character != null && bossBaseShot == null && character.CharacterType == Character.CharacterTypes.Player)
         {
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+			if(Lvl4UIManager.Instance != null)
+			{
+				Lvl4UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+			}
+			else if(UIManager.Instance != null)
+			{
+				UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+			}
         }
-    }   
+    } 
+
+	
 }

@@ -34,7 +34,7 @@ public class SingleShotWeapon : Weapon
 
         if (CanShoot)
         {
-			Debug.Log("Shoot method called");
+			//Debug.Log("Shoot method called");
             EvaluateProjectileSpawnPosition();
             SpawnProjectile(ProjectileSpawnPosition);
         }
