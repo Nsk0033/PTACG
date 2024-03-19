@@ -1,0 +1,1244 @@
+fileFormatVersion: 2
+guid: 88824f804a75b444186e6649578af805
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: poisonGas1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 544
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98866f92ab5273c41b48e8a54be425c4
+      internalID: -748322626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_1
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 544
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcfa5f328185af441b4515e961bf4502
+      internalID: -893067516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_1
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 544
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c45f71bc2193694bac7d1c957fc9f57
+      internalID: 979781790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_1
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 544
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218694120b584d14b971d98ed00f8871
+      internalID: 105485304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_1
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 544
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 078dbe9b49afc7d4ca9122adce680709
+      internalID: -585680908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2805409dd363bae49956b515912f11fa
+      internalID: -955341341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 512
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a345283fa63f5b7428589c60a3cf6626
+      internalID: 1973252552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_2
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 512
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef7cc644ab143846a3c7a1418e9c06e
+      internalID: -1072917817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_2
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 512
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855e734ad7c38914a86606b7e2f25652
+      internalID: -1356728991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_2
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 512
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76253db96923b38459ee722eb9d4a8a3
+      internalID: -468468425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caec6ff0112eb142863e0934b51bde4
+      internalID: 22712192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_3
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 480
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d2ac224fdbd1d48a316d0ce8e425e8
+      internalID: 321739668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_3
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 480
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c34037cd02c65941802a1dcc4b5ed07
+      internalID: 208824068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_3
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 480
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84498c98b72a8f644be4c4b721bfc48d
+      internalID: 1073976885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_3
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 480
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e57b51029a7b4a408fafd7ca036bd5c
+      internalID: 315942984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bca9b21077b3e84fb89a9831603eb84
+      internalID: 298567594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_4
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 448
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6618d845e52f34bb43bd5283e38fa7
+      internalID: 1384904594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_4
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 448
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894ac60a316a9b74ebe59c175f7d9677
+      internalID: 2043635496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_4
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 448
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad78a3420c32764f95db8213ddcdb36
+      internalID: 1732267186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_4
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 448
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d59e3aeedcdde1247b29d18046d85aa4
+      internalID: 359107155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceca68c1784fd4a46a16a9bf3d4529a2
+      internalID: 633868310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_5
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 416
+        width: 135
+        height: 32
+      alignment: 9
+      pivot: {x: 0.3872472, y: 0.17727375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0526ecbc3f2a840bbd181657b5db4c
+      internalID: 530702195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_5
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 416
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f7aa743b4305042b33536e79bf0059
+      internalID: 1720283931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_5
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 416
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a383b849714d9ca4dae199aa3426cae3
+      internalID: -1130772129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_5
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 416
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f91838b8a1e464c9d2f954ed8301a0
+      internalID: 658931966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 230
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50abeeebaee034a45a83b487cb472575
+      internalID: 103052350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas2_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 384
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f10bfd98237cc34fade066ca8ce44f8
+      internalID: 1633499869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas3_6
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 384
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146781302f51af1428e6fdd16bc96e76
+      internalID: 864123211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas4_6
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 384
+        width: 103
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 005bb933a3a04f4479f0641e3d79646b
+      internalID: -91484046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas5_6
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 384
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de046fd0cd6a9f4a8507bdc5daa4b0a
+      internalID: -683564840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 265
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81797efe85aa6d498e545f8679716e4
+      internalID: -1088068249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_1
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 336
+        width: 210
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b991f484c67abf458b8477b075c698d
+      internalID: -548370117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_1
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 336
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f74a68d8c109e42875212ad0ab5bde
+      internalID: -184363200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 265
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f989bb117fc8e443bd070b25210fcd6
+      internalID: -553345415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_2
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 288
+        width: 210
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d6b88ed6ae405d44bfbd69ed79e60f5
+      internalID: 1236835767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_2
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 288
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6b21b49d53f6147b84a812ef610b91
+      internalID: 1810670232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 265
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75400bc05a59dca4d838e9f56a10ae84
+      internalID: -1404586215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_3
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 242
+        width: 210
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6490049a0ea44ce4fb813835974f344a
+      internalID: 1781594348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_3
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 240
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5fc26bf850d62459bcf8cf39d5fc4a
+      internalID: 1986508422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 265
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196f78c70ebff344593b526de54d5e3a
+      internalID: -1500644670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 194
+        width: 210
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5ef9eca8873dd458a68cdae298211d
+      internalID: 11840890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_4
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 192
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85596757bf36a564bad66c6f98a65c91
+      internalID: -40647787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 265
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12191400599546b45b72018e55a342be
+      internalID: 1362025180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 146
+        width: 210
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a78f92766571d418e85b349c153cc3
+      internalID: 859665325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_5
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 144
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592c81a0a5ddfd44e85f5dbdab1bc915
+      internalID: 1532300791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas6_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 97
+        width: 265
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc2737cec4849d4e9c72a6ab6545dfd
+      internalID: -2026980971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas7_6
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 98
+        width: 210
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bbb588c7b741643b41ca9747014dc9
+      internalID: -2061551507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poisonGas8_6
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 96
+        width: 169
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6126bb9ca0d88484089c90df4a2a6b55
+      internalID: -1519231216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      poisonGas1_1: -748322626
+      poisonGas1_2: -955341341
+      poisonGas1_3: 22712192
+      poisonGas1_4: 298567594
+      poisonGas1_5: 633868310
+      poisonGas1_6: 103052350
+      poisonGas2_1: -893067516
+      poisonGas2_2: 1973252552
+      poisonGas2_3: 321739668
+      poisonGas2_4: 1384904594
+      poisonGas2_5: 530702195
+      poisonGas2_6: 1633499869
+      poisonGas3_1: 979781790
+      poisonGas3_2: -1072917817
+      poisonGas3_3: 208824068
+      poisonGas3_4: 2043635496
+      poisonGas3_5: 1720283931
+      poisonGas3_6: 864123211
+      poisonGas4_1: 105485304
+      poisonGas4_2: -1356728991
+      poisonGas4_3: 1073976885
+      poisonGas4_4: 1732267186
+      poisonGas4_5: -1130772129
+      poisonGas4_6: -91484046
+      poisonGas5_1: -585680908
+      poisonGas5_2: -468468425
+      poisonGas5_3: 315942984
+      poisonGas5_4: 359107155
+      poisonGas5_5: 658931966
+      poisonGas5_6: -683564840
+      poisonGas6_1: -1088068249
+      poisonGas6_2: -553345415
+      poisonGas6_3: -1404586215
+      poisonGas6_4: -1500644670
+      poisonGas6_5: 1362025180
+      poisonGas6_6: -2026980971
+      poisonGas7_1: -548370117
+      poisonGas7_2: 1236835767
+      poisonGas7_3: 1781594348
+      poisonGas7_4: 11840890
+      poisonGas7_5: 859665325
+      poisonGas7_6: -2061551507
+      poisonGas8_1: -184363200
+      poisonGas8_2: 1810670232
+      poisonGas8_3: 1986508422
+      poisonGas8_4: -40647787
+      poisonGas8_5: 1532300791
+      poisonGas8_6: -1519231216
+      water_detilazation_0: 35855839
+      water_detilazation_33: 444738591
+      water_detilazation_34: 942982330
+      water_detilazation_38: -671683387
+      water_detilazation_39: -6484086
+      water_detilazation_43: -2011391381
+      water_detilazation_44: -582984433
+      water_detilazation_48: 1077262925
+      water_detilazation_49: -557815988
+      water_detilazation_53: 1273185885
+      water_detilazation_54: 1532546965
+      water_detilazation_58: -1216900939
+      water_detilazation_59: 293408286
+      water_detilazation_60: 1456322806
+      water_detilazation_61: -1419216481
+      water_detilazation_62: -372136958
+      water_detilazation_63: 1375497618
+      water_detilazation_64: 5370155
+      water_detilazation_65: -1630777559
+      water_detilazation_66: -321314791
+      water_detilazation_67: -1342584483
+      water_detilazation_68: 1143515242
+      water_detilazation_69: -16379559
+      water_detilazation_70: 409836983
+      water_detilazation_71: -1153390876
+      water_detilazation_72: 392083088
+      water_detilazation_73: 6786685
+      water_detilazation_74: -401360394
+      water_detilazation_75: -766442024
+      water_detilazation_76: -2126201298
+      water_detilazation_77: 605226752
+      water_detilazation_78: 1879889385
+      water_detilazation_79: -991739933
+      water_detilazation_80: 879708547
+      water_detilazation_81: -476988896
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
