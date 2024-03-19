@@ -31,10 +31,23 @@ public class CharacterWeapon : CharacterComponents
     // Returns the reference to our Current Weapon Aim
     public WeaponAim WeaponAim { get; set; }
 
+    public bool IsBowUpgraded { get; set; }
+    public bool IsSwordUpgraded { get; set; }
+    public bool IsStaffOwned { get; set; }
+    public bool IsYamatoOwned { get; set; }
+
+
     protected override void Start()
     {
         base.Start();
-        if(!isBowUpgraded)
+
+        IsBowUpgraded = isBowUpgraded;
+        IsSwordUpgraded = isSwordUpgraded;
+        IsStaffOwned = isStaffOwned;
+        IsYamatoOwned = isYamatoOwned;
+
+
+        if (!isBowUpgraded)
 		{
 			EquipWeapon(BasicBow, weaponHolderPosition);
 		}	

@@ -37,21 +37,22 @@ public class Health : MonoBehaviour
 
     // Returns the current health of this character
     public float CurrentShield { get; set; }
-    public bool isShieldBroken { get; set; }
+    //public bool isShieldBroken { get; set; }
+    public bool IsShieldBroken => shieldBroken;
     
     private void Awake()
     {
         character = GetComponent<Character>();
         controller = GetComponent<CharacterController>();
-        collider2D = GetComponent<Collider2D>();      
-        enemyHealth = GetComponent<EnemyHealth>();  
+        collider2D = GetComponent<Collider2D>();    
+        enemyHealth = GetComponent<EnemyHealth>();
         bossBaseShot = GetComponent<BossBaseShot>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
-        isShieldBroken = shieldBroken;
+        //isShieldBroken = shieldBroken;
 
         if (character != null)
         {

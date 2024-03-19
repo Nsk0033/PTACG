@@ -22,8 +22,8 @@ public class Level6Manager : MonoBehaviour
     {
         _TimerUI.text = null;
         health = _Boss.GetComponent<Health>();
-        UnlockableWall.SetActive(false);
-        MazeEntrance.SetActive(false);
+        UnlockableWall.SetActive(true);
+        MazeEntrance.SetActive(true);
     }
 
     private void Update()
@@ -34,10 +34,10 @@ public class Level6Manager : MonoBehaviour
 
     private void UnlockableWallEnabled()
     {
-        bool bossShieldBroken = health.isShieldBroken;
+        bool bossShieldBroken = health.IsShieldBroken;
         if (bossShieldBroken)
         {
-            UnlockableWall.SetActive(true);
+            UnlockableWall.SetActive(false);
         }
     }
 
@@ -46,7 +46,7 @@ public class Level6Manager : MonoBehaviour
         bool bossDie = health.CurrentHealth <= 0;
         if (bossDie) 
         {
-            MazeEntrance.SetActive(true);
+            MazeEntrance.SetActive(false);
 
             _TimerUI.text = "Run!" + "\n" + _Timer.ToString();
             _Timer -= Time.deltaTime;

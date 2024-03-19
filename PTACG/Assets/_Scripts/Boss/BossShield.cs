@@ -8,35 +8,19 @@ public class BossShield : MonoBehaviour
     private Health _health;
     private bool _shieldBroken;
     private List<GameObject> Crystals = new List<GameObject>();
-    private SpriteRenderer _spriteRenderer;
     private CircleCollider2D _circleCollider;
 
     private void Start()
     {
-        _BossShield.SetActive(false);
         _health = GetComponent<Health>();
-        _shieldBroken = _health.isShieldBroken;
-        foreach (Transform childObject in transform) 
-        {
-            if (childObject.name == "Sprite") 
-            {
-                _circleCollider = GetComponent<CircleCollider2D>();
-            }
-        }
+        _circleCollider = GetComponent<CircleCollider2D>();
+        _BossShield.SetActive(false);
     }
 
     private void Update()
     {
-        Debug.Log("BossShield: " +_shieldBroken);
-        if (_shieldBroken)
-        {
-            _BossShield.SetActive(true);
-            _circleCollider.offset = new Vector2(_circleCollider.offset.x, 0);
-        }
-        else
-            return;
-
         CrystalBroken(_BossShield.active);
+        SealBroken();
     }
 
     private void findCrystals() 
@@ -46,28 +30,45 @@ public class BossShield : MonoBehaviour
         {
             Crystals.Add(crystalsFound);
         }
+        Debug.Log("Crystal List = " + Crystals.Count);
     }
 
     private void CrystalBroken(bool _BossShieldActivated) 
     {
-        if (Crystals.Count == 3)
+        if (_BossShieldActivated)
         {
-            _spriteRenderer.color = Color.yellow;
+            SpriteRenderer _spriteRenderer = _BossShield.GetComponent<SpriteRenderer>();
+            if (Crystals.Count == 3)
+            {
+                _spriteRenderer.color = Color.yellow;
+            }
+            else if (Crystals.Count == 2)
+            {
+                _spriteRenderer.color = new Color(1f, 0.65f, 0f);
+            }
+            else if (Crystals.Count == 1)
+            {
+                _spriteRenderer.color = Color.red;
+            }
+            else if (Crystals.Count == 0)
+            {
+                _BossShield.SetActive(false);
+            }
+            else
+                return;
         }
-        else if (Crystals.Count == 2)
+    }
+
+    private void SealBroken() 
+    {
+        _shieldBroken = _health.IsShieldBroken;
+        if (_shieldBroken)
         {
-            _spriteRenderer.color = new Color(1f, 0.65f, 0f);
-        }
-        else if (Crystals.Count == 1)
-        {
-            _spriteRenderer.color = Color.red;
-        }
-        else if (Crystals.Count == 0)
-        {
-            _BossShield.SetActive(false);
+            _BossShield.SetActive(true);
+            _circleCollider.offset = new Vector2(_circleCollider.offset.x, 0);
         }
         else
-            return;
+            _BossShield.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
