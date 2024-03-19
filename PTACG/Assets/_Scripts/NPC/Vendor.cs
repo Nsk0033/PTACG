@@ -4,22 +4,30 @@ using System.Collections.Generic;
 //using System.Reflection;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Vendor : MonoBehaviour
 {
     [Header("Panels")]
 	[SerializeField] private GameObject popUpPanel;
 	[SerializeField] private GameObject shopPanel;
+	[SerializeField] private GameObject gachaWinPanel;
 
     [Header("Items")]
     //[SerializeField] private VendorItem weaponItem;
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
-    [Header("Conversation Panel")]
-    [SerializeField] private GameObject VendorConversationPanel;
+    [Header("Settings")]
+    [SerializeField] [Range(0,100)] private float chanceToDrop = 5f;
+    [SerializeField] private Transform placeToDrop;
+	[SerializeField] private int gachaCounter = 0;
+	[SerializeField] private GameObject player;
+	
+	[Header("Rewards")]
+    [SerializeField] private GameObject[] rewards;
     
-
+	private bool weaponOwned;
     public bool canOpenShop;
     private CharacterWeapon characterWeapon;
 
@@ -54,8 +62,55 @@ public class Vendor : MonoBehaviour
 	
 	public void BuyGacha()
 	{
-		//gacha script here
-		Debug.Log("Gacha Start!");
+		ProductBought(20);
+		gachaCounter++;
+		if (gachaCounter == 5 && !weaponOwned)
+		{
+			gachaWinPanel.SetActive(true);
+			Invoke("CloseGachaTab",3f);
+        }
+		else
+		{
+			float probability = Random.Range(0, 100);
+			if (probability > chanceToDrop)
+			{
+				Instantiate(SelectReward(), placeToDrop.position, Quaternion.identity);
+			}
+			else if (probability <= chanceToDrop)
+			{
+				if(!weaponOwned)
+				{
+					weaponOwned = true;
+					CharacterWeapon characterWeapon = player.GetComponent<CharacterWeapon>();
+					if (characterWeapon != null)
+					{
+						characterWeapon.SetIsStaffOwned();
+					}
+					else
+					{
+						Debug.LogWarning("CharacterWeapon component not found on the player object.");
+					}
+					gachaWinPanel.SetActive(true);
+					Invoke("CloseGachaTab",3f);
+				}
+				else
+				{
+					Instantiate(SelectReward(), placeToDrop.position, Quaternion.identity);
+				}
+			}
+		}
+		
+	}
+	
+	private void CloseGachaTab()
+	{
+		gachaWinPanel.SetActive(false);
+	}
+	
+	private GameObject SelectReward()
+	{
+		int randomRewardIndex = Random.Range(0, rewards.Length);
+		return rewards[randomRewardIndex];
 	}
 	
     /*private void BuyItems()

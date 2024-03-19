@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5688641205746221756}
   - component: {fileID: 7719038761632343859}
   - component: {fileID: 4936212357393343429}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ThunderBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

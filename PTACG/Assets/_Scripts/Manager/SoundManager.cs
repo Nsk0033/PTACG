@@ -39,13 +39,15 @@ public class SoundManager : Singleton<SoundManager>
     {
         musicAudioSource.loop = true;
         musicAudioSource.clip = musicClip;
+		musicAudioSource.volume = 0.6f; // Set volume to 0.6f
         musicAudioSource.Play();
     }
 	
 	public void StopMusic()
     {
 		musicAudioSource.clip = musicClip;
-        musicAudioSource.Pause();
+		musicAudioSource.volume = 0f; // Set volume to 0f
+        musicAudioSource.Stop();
     }
     
     public void PlaySound(AudioClip clipToPlay, float volume)
