@@ -93777,7 +93777,6 @@ GameObject:
   - component: {fileID: 563605958}
   - component: {fileID: 563605961}
   - component: {fileID: 563605960}
-  - component: {fileID: 563605959}
   m_Layer: 5
   m_Name: VendorConvaersationPanel
   m_TagString: Untagged
@@ -93806,30 +93805,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: 1400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &563605959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563605957}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95346b7cdda991b46ab32c987ad4f0f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wholePanel: {fileID: 563605957}
-  textContent: {fileID: 0}
-  lines:
-  - 'habibi! you need something? here got everything you need! need health potions?
-    sheild potions? Or... even a new weapon? with enough money you can have it all!
-    now even got promotion, if you roll the gacha for 5 times you will 100% get the
-    weapon!  '
-  - 'habibi! you need something? here got everything you need! need health potions?
-    sheild potions? Or... even a new weapon? with enough money you can have it all!
-    now even got promotion, if you roll the gacha for 5 times you will 100% get the
-    weapon!  '
-  textSpeed: 1
 --- !u!114 &563605960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116224,6 +116199,8 @@ MonoBehaviour:
   initialShield: 50
   maxShield: 50
   destroyObject: 0
+  damageCooldown: 0.75
+  canTakeDamage: 1
 --- !u!1 &1820969434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: 0c602d7e4ea1a62488d1635e40f95905, type: 3}
@@ -116637,6 +116614,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1737980872}
         m_TargetAssemblyTypeName: DialogSystem, Assembly-CSharp
         m_MethodName: OnBuyBtnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1737980870}
+        m_TargetAssemblyTypeName: Vendor, Assembly-CSharp
+        m_MethodName: BuySheildPotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -117637,6 +117626,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1737980872}
         m_TargetAssemblyTypeName: DialogSystem, Assembly-CSharp
         m_MethodName: OnBuyBtnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1737980870}
+        m_TargetAssemblyTypeName: Vendor, Assembly-CSharp
+        m_MethodName: BuyHealthPotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
