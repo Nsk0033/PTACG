@@ -6,7 +6,15 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     private bool isPaused = false;
+	private Scene _currentScene;
 	[SerializeField] private GameObject pauseMenu;
+
+	public string CurrentScene => _currentScene.name;
+
+    private void Start()
+    {
+        _currentScene = SceneManager.GetActiveScene();
+    }
 
     void Update()
     {

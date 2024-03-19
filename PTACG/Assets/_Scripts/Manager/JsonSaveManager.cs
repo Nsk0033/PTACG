@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
+using UnityEngine.SceneManagement;
 
 public class JsonSaveManager : MonoBehaviour
 {
+    private PauseManager pauseManager;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Delete))
@@ -29,7 +30,7 @@ public class JsonSaveManager : MonoBehaviour
             playerData.currentHealth = player.GetComponent<Health>().CurrentHealth;
             playerData.currentHealth = player.GetComponent<Health>().CurrentShield;
             playerData.currentMoney = CoinManager.Instance.Coins.ToString();
-            //playerData.currentScene = 
+            playerData.currentScene = pauseManager.CurrentScene;
 
             playerData.isBowUpgraded = player.GetComponent<CharacterWeapon>().IsBowUpgraded;
             playerData.isSwordUpgraded = player.GetComponent<CharacterWeapon>().IsSwordUpgraded;
@@ -53,6 +54,8 @@ public class JsonSaveManager : MonoBehaviour
             Debug.Log("json read = " + jsonRead);
             
             PlayerData playerLoaded = JsonUtility.FromJson<PlayerData>(jsonRead);
+
+            SceneManager.LoadScene(playerLoaded.currentScene);
             player.transform.localPosition = playerLoaded.currentPosition;
             player.GetComponent<Health>().CurrentHealth = playerLoaded.currentHealth;
             player.GetComponent<Health>().CurrentShield = playerLoaded.currentShield;
@@ -63,6 +66,7 @@ public class JsonSaveManager : MonoBehaviour
             player.GetComponent<CharacterWeapon>().IsSwordUpgraded = playerLoaded.isSwordUpgraded;
             player.GetComponent<CharacterWeapon>().IsStaffOwned = playerLoaded.isStaffOwned;
             player.GetComponent<CharacterWeapon>().IsYamatoOwned = playerLoaded.isYamatoOwned;
+
         }
     }
 

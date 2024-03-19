@@ -62,6 +62,7 @@ public class BossShield : MonoBehaviour
     private void SealBroken() 
     {
         _shieldBroken = _health.IsShieldBroken;
+        //_shieldBroken = _health.IsShieldBroken;
         if (_shieldBroken)
         {
             _BossShield.SetActive(true);

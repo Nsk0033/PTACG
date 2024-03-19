@@ -32,14 +32,12 @@ public class Health : MonoBehaviour
     private bool isPlayer;
     private bool shieldBroken;
 	
-
-
     // Controls the current health of the object    
     public float CurrentHealth { get; set; }
 
     // Returns the current health of this character
     public float CurrentShield { get; set; }
-    public bool isShieldBroken { get; set; }
+    public bool IsShieldBroken => shieldBroken;
     
     private void Awake()
     {
