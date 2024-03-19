@@ -124136,8 +124136,8 @@ MonoBehaviour:
   Yamato: {fileID: 5301248613224042060, guid: c4e3d9e36daed6841a8d58ea3678fd36, type: 3}
   isBowUpgraded: 0
   isSwordUpgraded: 0
-  isStaffOwned: 1
-  isYamatoOwned: 1
+  isStaffOwned: 0
+  isYamatoOwned: 0
 --- !u!114 &1811728463
 MonoBehaviour:
   m_ObjectHideFlags: 0

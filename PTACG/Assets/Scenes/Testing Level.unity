@@ -118050,6 +118050,8 @@ MonoBehaviour:
   shopPanel: {fileID: 762399061}
   healthItem: {fileID: 11400000, guid: 3d1424f69b910124680942116928bce5, type: 2}
   shieldItem: {fileID: 11400000, guid: 4d649024ab3c96a4ca80c8a07b8586cf, type: 2}
+  VendorConversationPanel: {fileID: 0}
+  canOpenShop: 0
 --- !u!70 &1737980871
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -118427,6 +118429,8 @@ MonoBehaviour:
   initialShield: 50
   maxShield: 50
   destroyObject: 0
+  damageCooldown: 0.75
+  canTakeDamage: 1
 --- !u!114 &1811728464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122277,10 +122281,6 @@ PrefabInstance:
     - target: {fileID: 2546941309528228851, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_Name
       value: Portal
-      objectReference: {fileID: 0}
-    - target: {fileID: 2886999300303236180, guid: 02211a0749b988f48896553a0651dd54, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8823955188091192486, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_LocalPosition.x

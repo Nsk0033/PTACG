@@ -63,7 +63,7 @@ public class JsonSaveManager : MonoBehaviour
         public int currentScene;
 
         //Player weapon
-        public int currentAmmo;
+        //public int currentAmmo;
 
         //weapon information
         public bool isBowUpgraded;
