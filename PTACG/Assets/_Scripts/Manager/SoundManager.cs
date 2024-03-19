@@ -14,6 +14,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private AudioClip impactClip;
     [SerializeField] private AudioClip coinClip;
     [SerializeField] private AudioClip itemClip;
+	
     
     public AudioClip ShootClip => shootClip;
     public AudioClip ImpactClip => impactClip;
@@ -24,6 +25,8 @@ public class SoundManager : Singleton<SoundManager>
 	private AudioSource musicAudioSource;    
     private ObjectPooler soundObjectPooler;
 
+	private Dictionary<AudioClip, AudioSource> activeAudioSources = new Dictionary<AudioClip, AudioSource>(); // Track active audio sources for each clip
+
     protected override void Awake()
     {
         soundObjectPooler = GetComponent<ObjectPooler>();
@@ -32,11 +35,17 @@ public class SoundManager : Singleton<SoundManager>
         PlayMusic();
 	}
 
-    private void PlayMusic()
+    public void PlayMusic()
     {
         musicAudioSource.loop = true;
         musicAudioSource.clip = musicClip;
         musicAudioSource.Play();
+    }
+	
+	public void StopMusic()
+    {
+		musicAudioSource.clip = musicClip;
+        musicAudioSource.Pause();
     }
     
     public void PlaySound(AudioClip clipToPlay, float volume)
@@ -50,11 +59,28 @@ public class SoundManager : Singleton<SoundManager>
             audioSource = audioPooled.GetComponent<AudioSource>();
         }
 
-        audioSource.clip = clipToPlay;
-        audioSource.volume = volume;
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.clip = clipToPlay;
+            audioSource.volume = volume;
+            audioSource.Play();
 
-        StartCoroutine(ReturnToPool(audioPooled, clipToPlay.length + 1));
+            activeAudioSources[clipToPlay] = audioSource; // Add the audio source to the dictionary with the clip as key
+            StartCoroutine(ReturnToPool(audioPooled, clipToPlay.length + 1));
+        }
+    }
+	
+	public void StopSound(AudioClip clipToStop)
+    {
+        if (activeAudioSources.ContainsKey(clipToStop))
+        {
+            AudioSource audioSource = activeAudioSources[clipToStop];
+            if (audioSource != null)
+            {
+                audioSource.Stop();
+                activeAudioSources.Remove(clipToStop); // Remove the audio source from the dictionary
+            }
+        }
     }
 
     private IEnumerator ReturnToPool(GameObject objectPool, float delay)

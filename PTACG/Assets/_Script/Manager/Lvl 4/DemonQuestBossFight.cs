@@ -10,6 +10,7 @@ public class DemonQuestBossFight : MonoBehaviour
 	[SerializeField] private GameObject canva;
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
+	[SerializeField] private GameObject bgm;
 	
 	
 	
@@ -40,9 +41,15 @@ public class DemonQuestBossFight : MonoBehaviour
             {
                 Debug.LogWarning("Lvl4UIManager component not found in the scene.");
             }
+			
+			if(boss.activeSelf)
+			{
+				bgm.SetActive(true);
+				SoundManager.Instance.StopMusic();
+			}
+			
         }
-		
-		
+	
     }
 	
 	private void OnTriggerExit2D(Collider2D other)
@@ -53,7 +60,10 @@ public class DemonQuestBossFight : MonoBehaviour
 			{
 				canva.SetActive(false);
 			}
+			SoundManager.Instance.PlayMusic();
+			bgm.SetActive(false);
 		}
+		
 	}
 	
 	private void Update()
@@ -73,11 +83,49 @@ public class DemonQuestBossFight : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		SoundManager.Instance.PlayMusic();
+		bgm.SetActive(false);
 		canva.SetActive(false);
 		wall.SetActive(false);
 		wall1.SetActive(false);
 		hasTriggered = true; // Mark the trigger as activated
 		// GameObject has been destroyed
 		Debug.Log("GameObject has been destroyed!");
+	}
+	
+	public void CameraShakeStart()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = true;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
+	}
+	
+	public void CameraShakeEnd()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = false;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
 	}
 }

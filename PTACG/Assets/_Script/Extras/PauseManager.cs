@@ -42,4 +42,9 @@ public class PauseManager : MonoBehaviour
 	{
 		SceneManager.LoadScene("MainMenu");
 	}
+	
+	public void GoToLevel1()
+	{
+		//SceneManager.LoadScene("Level1");
+	}
 }

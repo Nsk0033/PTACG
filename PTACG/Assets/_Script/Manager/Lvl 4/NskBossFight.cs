@@ -11,6 +11,10 @@ public class NskBossFight : MonoBehaviour
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
 	[SerializeField] private GameObject wall2;
+	[SerializeField] private GameObject bgm;
+	[SerializeField] private GameObject player;
+	[SerializeField] private int deathTimer = 0;
+	
 	
 	
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,6 +24,8 @@ public class NskBossFight : MonoBehaviour
 			wall.SetActive(true);
 			wall1.SetActive(true);
 			wall2.SetActive(true);
+			
+			deathTimer++;
 			
             ResetBossHealth resetBossHealth = boss.GetComponent<ResetBossHealth>();
 			if (resetBossHealth != null)
@@ -41,10 +47,30 @@ public class NskBossFight : MonoBehaviour
             {
                 Debug.LogWarning("Lvl4UIManager component not found in the scene.");
             }
+			if(boss.activeSelf)
+			{
+				bgm.SetActive(true);
+				SoundManager.Instance.StopMusic();
+			}
         }
 		
-		
+		if(deathTimer > 3)
+		{
+			if (player != null)
+			{
+				CharacterWeapon characterWeapon = player.GetComponent<CharacterWeapon>();
+				if (characterWeapon != null)
+				{
+					characterWeapon.SetIsYamatoOwned();
+				}
+				else
+				{
+					Debug.LogWarning("CharacterWeapon component not found on player GameObject.");
+				}
+			}
+		}
     }
+	
 	
 	private void OnTriggerExit2D(Collider2D other)
 	{
@@ -54,6 +80,8 @@ public class NskBossFight : MonoBehaviour
 			{
 				canva.SetActive(false);
 			}
+			SoundManager.Instance.PlayMusic();
+			bgm.SetActive(false);
 		}
 	}
 	
@@ -74,6 +102,8 @@ public class NskBossFight : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		SoundManager.Instance.PlayMusic();
+		bgm.SetActive(false);
 		canva.SetActive(false);
 		wall.SetActive(false);
 		wall1.SetActive(false);
@@ -83,5 +113,39 @@ public class NskBossFight : MonoBehaviour
 		Debug.Log("GameObject has been destroyed!");
 	}
 	
+	public void CameraShakeStart()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = true;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
+	}
 	
+	public void CameraShakeEnd()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = false;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
+	}
 }

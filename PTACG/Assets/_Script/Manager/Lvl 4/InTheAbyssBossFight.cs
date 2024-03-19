@@ -10,6 +10,7 @@ public class InTheAbyssBoss : MonoBehaviour
 	[SerializeField] private GameObject canva;
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
+	[SerializeField] private GameObject bgm;
 	
 	
     private void OnTriggerEnter2D(Collider2D other)
@@ -39,6 +40,11 @@ public class InTheAbyssBoss : MonoBehaviour
             {
                 Debug.LogWarning("Lvl4UIManager component not found in the scene.");
             }
+			if(boss.activeSelf)
+			{
+				bgm.SetActive(true);
+				SoundManager.Instance.StopMusic();
+			}
         }
 		
 		
@@ -52,6 +58,8 @@ public class InTheAbyssBoss : MonoBehaviour
 			{
 				canva.SetActive(false);
 			}
+			SoundManager.Instance.PlayMusic();
+			bgm.SetActive(false);
 		}
 	}
 	
@@ -72,6 +80,8 @@ public class InTheAbyssBoss : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		SoundManager.Instance.PlayMusic();
+		bgm.SetActive(false);
 		canva.SetActive(false);
 		wall.SetActive(false);
 		wall1.SetActive(false);
@@ -80,5 +90,40 @@ public class InTheAbyssBoss : MonoBehaviour
 		Debug.Log("GameObject has been destroyed!");
 	}
 	
+	public void CameraShakeStart()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = true;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
+	}
+	
+	public void CameraShakeEnd()
+	{
+		// Assuming bgm is the GameObject containing the AudioCameraShake component
+		AudioCameraShake bgmShake = bgm.GetComponent<AudioCameraShake>();
+
+		// Check if the component is found
+		if (bgmShake != null)
+		{
+			// Enable the component
+			bgmShake.enabled = false;
+		}
+		else
+		{
+			// Log a warning if the component is not found
+			Debug.LogWarning("AudioCameraShake component not found on the GameObject.");
+		}
+	}
 	
 }

@@ -218,5 +218,7 @@ public class Health : MonoBehaviour
 				UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
 			}
         }
-    }   
+    } 
+
+	
 }

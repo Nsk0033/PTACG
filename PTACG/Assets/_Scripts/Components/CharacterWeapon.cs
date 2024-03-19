@@ -186,4 +186,24 @@ public class CharacterWeapon : CharacterComponents
 			}
         }
     }
+	public void SetIsBowUpgraded()
+    {
+		isBowUpgraded = true;
+    }
+	
+	public void SetIsSwordUpgraded()
+    {
+		isSwordUpgraded = true;
+    }
+	
+	public void SetIsStaffOwned()
+    {
+		isStaffOwned = true;
+    }
+
+	
+	public void SetIsYamatoOwned()
+    {
+		isYamatoOwned = true;
+    }
 }
