@@ -5,42 +5,64 @@ using UnityEngine;
 
 public class ProjectileSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnProjectile;
+    //[SerializeField] private GameObject spawnProjectile;
+    private ObjectPooler Pooler;
     [SerializeField] private float spawnTime = 0.6f;
-	private bool canSpawn = true;
+    private bool canSpawn = true;
+    private Coroutine spawnCoroutine;
 
-	
-	private void Start()
+    private void Start()
     {
-        StartCoroutine(SpawnProjectiles());
+        Pooler = GetComponent<ObjectPooler>();
+        StartSpawning();
     }
-	
-	
-	private IEnumerator SpawnProjectiles()
+
+    private void StartSpawning()
+	{
+		if (Pooler == null)
+		{
+			Debug.LogError("Pooler is not assigned in ProjectileSpawn script!");
+		}
+
+		if (spawnCoroutine == null)
+		{
+			spawnCoroutine = StartCoroutine(SpawnProjectiles());
+		}
+	}
+
+    private void StopSpawning()
+    {
+        canSpawn = false;
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
+    }
+
+    private IEnumerator SpawnProjectiles()
     {
         while (canSpawn)
         {
-            // Instantiate the projectile at the current GameObject's position and rotation
-            Instantiate(spawnProjectile, transform.position, Quaternion.identity);
+            GameObject projectilePooled = Pooler.GetObjectFromPool();
+            projectilePooled.transform.position = transform.position;
+            projectilePooled.SetActive(true);
+
+            Projectile projectile = projectilePooled.GetComponent<Projectile>();
+            projectile.EnableProjectile();
 			Debug.Log("SPAWN!");
-            // Wait for 1 second before spawning the next projectile
+			
             yield return new WaitForSeconds(spawnTime);
         }
     }
-	
-	public void StopSpawning()
+
+    private void OnEnable()
     {
-        canSpawn = false;
-    }
-	
-	 private void OnEnable()
-    {
-        StartCoroutine(SpawnProjectiles());
+        StartSpawning();
     }
 
     private void OnDisable()
     {
-        StopCoroutine(SpawnProjectiles());
+        StopSpawning();
     }
-    
 }

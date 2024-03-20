@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InTheAbyssBoss : MonoBehaviour
+public class InTheAbyssBossFight : MonoBehaviour
 {
     private bool hasTriggered = false;
 	private bool gateOpened = false;
@@ -17,6 +17,7 @@ public class InTheAbyssBoss : MonoBehaviour
     {
         if (!hasTriggered && other.CompareTag("Player"))
         {
+			
 			wall.SetActive(true);
 			wall1.SetActive(true);
 			
