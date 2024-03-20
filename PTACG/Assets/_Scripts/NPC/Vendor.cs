@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+
 //using System.Reflection;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Video;
 using Random = UnityEngine.Random;
 
 public class Vendor : MonoBehaviour
@@ -12,6 +15,13 @@ public class Vendor : MonoBehaviour
 	[SerializeField] private GameObject popUpPanel;
 	[SerializeField] private GameObject shopPanel;
 	[SerializeField] private GameObject gachaWinPanel;
+    
+
+    [Header("Ads")]
+    [SerializeField] private GameObject adPanel;
+    [SerializeField] private GameObject watchAdButton;
+    [SerializeField] private GameObject ad1;
+    [SerializeField] private GameObject ad2;
 
     [Header("Items")]
     //[SerializeField] private VendorItem weaponItem;
@@ -30,7 +40,13 @@ public class Vendor : MonoBehaviour
 	private bool weaponOwned;
     public bool canOpenShop;
     private CharacterWeapon characterWeapon;
+    private VideoPlayer videoPlayer;
+    SoundManager soundManager;
 
+    private void Start()
+    {
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+    }
     private void Update()
     {
         if (canOpenShop)
@@ -38,6 +54,7 @@ public class Vendor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 shopPanel.SetActive(true);
+                watchAdButton.SetActive(true);
                 popUpPanel.SetActive(false);
             }
         }
@@ -112,7 +129,7 @@ public class Vendor : MonoBehaviour
 		int randomRewardIndex = Random.Range(0, rewards.Length);
 		return rewards[randomRewardIndex];
 	}
-	
+
     /*private void BuyItems()
     {
 
@@ -134,6 +151,38 @@ public class Vendor : MonoBehaviour
             }
         }
     }*/
+    public void WatchAd()
+    {
+        shopPanel.SetActive(false);
+        adPanel.SetActive(true);
+        ad1.SetActive(true);
+        videoPlayer = ad1.GetComponent<VideoPlayer>();
+        videoPlayer.Play();
+        soundManager.StopMusic();
+
+        StartCoroutine(AnotherAd());
+        StartCoroutine(ResetShopPanel());
+    }
+
+    IEnumerator AnotherAd()
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(15.0f);
+        ad1.SetActive(false);
+        ad2.SetActive(true);
+        videoPlayer = ad2.GetComponent<VideoPlayer>();
+        videoPlayer.Play();
+    }
+
+    IEnumerator ResetShopPanel()
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(30.0f);
+        ad2.SetActive(false);
+        shopPanel.SetActive(true);
+        watchAdButton.SetActive(false);
+        soundManager.PlayMusic();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
