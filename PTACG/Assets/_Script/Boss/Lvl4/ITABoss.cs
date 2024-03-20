@@ -87,7 +87,7 @@ public class ITABoss : MonoBehaviour
 				PlayRandomAnimation();
 				randomAnimationTimer = 0f; // Reset the timer
 			}
-			if(bosshealth.CurrentHealth <= 170)
+			if(bosshealth.CurrentHealth <= 200)
 			{
 				
 				Aura.SetActive(true);

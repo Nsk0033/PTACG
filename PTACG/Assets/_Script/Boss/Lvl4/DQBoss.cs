@@ -65,7 +65,7 @@ public class DQBoss : MonoBehaviour
 			PlayRandomAnimation();
 			randomAnimationTimer = 0f; // Reset the timer
 		}
-		if(bosshealth.CurrentHealth <= 150)
+		if(bosshealth.CurrentHealth <= 180)
 		{
 			Aura.SetActive(true);
 			secondPhase = true;
