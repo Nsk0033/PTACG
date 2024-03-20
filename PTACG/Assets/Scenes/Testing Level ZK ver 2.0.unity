@@ -91228,13 +91228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591901e7503937d49aa0830fe6102f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 300
-  maxHealth: 300
-  initialShield: 0
-  maxShield: 0
-  destroyObject: 0
-  damageCooldown: 0.75
-  canTakeDamage: 1
 --- !u!114 &157062250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91247,13 +91240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24054c8b319753444b43404290fda625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthBarPrefab: {fileID: 882865819}
-  offSet: {x: 0, y: 1, z: 0}
-  staffDamage: 4
-  meleeDamage: 4
-  biggerMeleeDamage: 6
-  arrowDamage: 3
-  yamatoDamage: 1
 --- !u!1001 &166660824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100100,13 +100086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591901e7503937d49aa0830fe6102f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 250
-  maxHealth: 250
-  initialShield: 0
-  maxShield: 0
-  destroyObject: 0
-  damageCooldown: 0.75
-  canTakeDamage: 1
 --- !u!114 &451587519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100119,13 +100098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24054c8b319753444b43404290fda625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthBarPrefab: {fileID: 916208166}
-  offSet: {x: 0, y: 1, z: 0}
-  staffDamage: 4
-  meleeDamage: 4
-  biggerMeleeDamage: 6
-  arrowDamage: 3
-  yamatoDamage: 1
 --- !u!1 &465915884
 GameObject:
   m_ObjectHideFlags: 0
@@ -101038,7 +101010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &608531196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101738,13 +101710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24054c8b319753444b43404290fda625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthBarPrefab: {fileID: 913832700}
-  offSet: {x: 0, y: 1, z: 0}
-  staffDamage: 4
-  meleeDamage: 4
-  biggerMeleeDamage: 6
-  arrowDamage: 3
-  yamatoDamage: 1
 --- !u!114 &745137720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101757,13 +101722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591901e7503937d49aa0830fe6102f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 350
-  maxHealth: 350
-  initialShield: 0
-  maxShield: 0
-  destroyObject: 0
-  damageCooldown: 0.75
-  canTakeDamage: 1
 --- !u!1 &747436294
 GameObject:
   m_ObjectHideFlags: 0
@@ -118299,11 +118257,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 860589312}
---- !u!1 &882865819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8082574870074312457, guid: 6afa4cf2f9a74eb40ada58e3a784b95f, type: 3}
-  m_PrefabInstance: {fileID: 166660824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &896949516
 GameObject:
   m_ObjectHideFlags: 0
@@ -118388,16 +118341,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 277921782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &913832700 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8082574870074312457, guid: 6afa4cf2f9a74eb40ada58e3a784b95f, type: 3}
-  m_PrefabInstance: {fileID: 155842297}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &916208166 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8082574870074312457, guid: 6afa4cf2f9a74eb40ada58e3a784b95f, type: 3}
-  m_PrefabInstance: {fileID: 6291347181089029134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &921138920
 GameObject:
   m_ObjectHideFlags: 0
@@ -119737,13 +119680,14 @@ GameObject:
   - component: {fileID: 1126916463}
   - component: {fileID: 1126916467}
   - component: {fileID: 1126916466}
+  - component: {fileID: 1126916468}
   m_Layer: 0
   m_Name: ZhengKai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1126916463
 Animator:
   serializedVersion: 5
@@ -119913,6 +119857,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 9.70657}
   m_EdgeRadius: 0
+--- !u!114 &1126916468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126916462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6de089b9d8bee449e0c0a4b7a3028e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wholePanel: {fileID: 0}
+  textContent: {fileID: 0}
+  lines: []
+  textSpeed: 0
+  interactText: {fileID: 0}
 --- !u!1 &1158905238
 GameObject:
   m_ObjectHideFlags: 0
@@ -122281,6 +122242,8 @@ MonoBehaviour:
   boss: {fileID: 451587505}
   canva: {fileID: 2120218114}
   wall: {fileID: 135884740}
+  wall1: {fileID: 0}
+  bgm: {fileID: 0}
 --- !u!1 &1498016066
 GameObject:
   m_ObjectHideFlags: 0
@@ -122619,6 +122582,8 @@ MonoBehaviour:
   boss: {fileID: 157062238}
   canva: {fileID: 1035393774}
   wall: {fileID: 1310003526}
+  wall1: {fileID: 0}
+  bgm: {fileID: 0}
 --- !u!1 &1501550718
 GameObject:
   m_ObjectHideFlags: 0
@@ -124231,6 +124196,7 @@ MonoBehaviour:
   destroyObject: 0
   damageCooldown: 0.3
   canTakeDamage: 1
+  timeToDestroy: 2
 --- !u!114 &1811728464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124360,6 +124326,10 @@ MonoBehaviour:
   canva: {fileID: 1892629749}
   wall: {fileID: 794802916}
   wall1: {fileID: 1289217854}
+  wall2: {fileID: 0}
+  bgm: {fileID: 0}
+  player: {fileID: 0}
+  deathTimer: 0
 --- !u!1 &1835843656
 GameObject:
   m_ObjectHideFlags: 0
@@ -132923,11 +132893,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8823955188091192486, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.73
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8823955188091192486, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66.86
+      value: 23.8
       objectReference: {fileID: 0}
     - target: {fileID: 8823955188091192486, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_LocalPosition.z

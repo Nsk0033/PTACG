@@ -66,6 +66,8 @@ public class Health : MonoBehaviour
         {
             TakeDamage(5);
         }
+        //real time update UI
+        UpdateCharacterHealth();
     }
 
     // Take the amount of damage we pass in parameters
