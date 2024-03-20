@@ -89,7 +89,7 @@ public class ITABoss : MonoBehaviour
 			}
 			if(bosshealth.CurrentHealth <= 200)
 			{
-				
+				ThunderIcon.SetActive(true);
 				Aura.SetActive(true);
 				secondPhase = true;
 			}
@@ -370,7 +370,7 @@ public class ITABoss : MonoBehaviour
 	public void SpawnSlash()
 	{
 		// Get the direction the boss is facing
-		Vector3 bossDirection = spriteRenderer.flipX ? Vector3.left : Vector3.right;
+		Vector3 bossDirection = spriteRenderer.transform.localScale.x > 0 ? Vector3.right : Vector3.left;
 
 		// Calculate the rotation angle based on the boss's facing direction
 		float angle = Vector3.Angle(Vector3.right, bossDirection);
@@ -388,18 +388,37 @@ public class ITABoss : MonoBehaviour
 	
 	public void SpawnBurst()
 	{
-		// Loop to spawn 5 burstPrefabs
-		for (int i = 0; i < 5; i++)
+		if(!secondPhase)
 		{
-			// Generate random offsets for X and Y within ±10 range
-			float offsetX = Random.Range(-10f, 10f);
-			float offsetY = Random.Range(-10f, 10f);
+			// Loop to spawn 5 burstPrefabs
+			for (int i = 0; i < 5; i++)
+			{
+				// Generate random offsets for X and Y within ±10 range
+				float offsetX = Random.Range(-7f, 7f);
+				float offsetY = Random.Range(-7f, 7f);
 
-			// Calculate the spawn position around the player
-			Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
+				// Calculate the spawn position around the player
+				Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
 
-			// Instantiate the burstPrefab at the calculated position
-			Instantiate(burstPrefab, spawnPosition, Quaternion.identity);
+				// Instantiate the burstPrefab at the calculated position
+				Instantiate(burstPrefab, spawnPosition, Quaternion.identity);
+			}
+		}
+		if(secondPhase)
+		{
+			// Loop to spawn 5 burstPrefabs
+			for (int i = 0; i < 10; i++)
+			{
+				// Generate random offsets for X and Y within ±10 range
+				float offsetX = Random.Range(-6f, 6f);
+				float offsetY = Random.Range(-6f, 6f);
+
+				// Calculate the spawn position around the player
+				Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
+
+				// Instantiate the burstPrefab at the calculated position
+				Instantiate(burstPrefab, spawnPosition, Quaternion.identity);
+			}
 		}
 	}
 }

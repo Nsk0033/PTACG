@@ -26,7 +26,10 @@ public class CoinManager : Singleton<CoinManager>
 
     public void RemoveCoins(int amount)
     {
-        Coins -= amount;
+        if (Coins > amount)
+        {
+            Coins -= amount;
+        }
         PlayerPrefs.SetInt(COINS_KEY, Coins);
     }
 }

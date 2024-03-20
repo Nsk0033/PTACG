@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2086c7fdfee39d43865c93bf9da0ea1, type: 3}
   m_Name: ActionHaunt
   m_EditorClassIdentifier: 
-  minDistanceToFollow: 2
+  minDistanceToFollow: 1
