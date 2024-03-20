@@ -30704,6 +30704,10 @@ MonoBehaviour:
   popUpPanel: {fileID: 509237848}
   shopPanel: {fileID: 2117328677}
   gachaWinPanel: {fileID: 2117275869}
+  adPanel: {fileID: 0}
+  watchAdButton: {fileID: 0}
+  ad1: {fileID: 0}
+  ad2: {fileID: 0}
   healthItem: {fileID: 11400000, guid: 3d1424f69b910124680942116928bce5, type: 2}
   shieldItem: {fileID: 11400000, guid: 4d649024ab3c96a4ca80c8a07b8586cf, type: 2}
   chanceToDrop: 5
@@ -145189,6 +145193,50 @@ Transform:
   - {fileID: 942730059}
   m_Father: {fileID: 1819629070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2099876256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099876258}
+  - component: {fileID: 2099876257}
+  m_Layer: 0
+  m_Name: JsonSaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2099876257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099876256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2127e80724f9bda4c9de6c76fa8c0687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2099876258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099876256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2107497266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5738117750049147419, guid: b9bb0a4f18349e24bb9b90d0228d79d3, type: 3}
@@ -145504,3 +145552,4 @@ SceneRoots:
   - {fileID: 1259287120}
   - {fileID: 537181239}
   - {fileID: 486359896}
+  - {fileID: 2099876258}

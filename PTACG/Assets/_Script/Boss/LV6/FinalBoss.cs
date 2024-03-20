@@ -17,7 +17,7 @@ public class FinalBoss : MonoBehaviour
     Rigidbody2D rb2d;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    private Health bosshealth;
+    //private Health bosshealth;
     //private CircleCollider2D circle2d;
     private bool canAttack = true;
     private bool isDead;
@@ -93,7 +93,7 @@ public class FinalBoss : MonoBehaviour
             //    Aura.SetActive(true);
             //    secondPhase = true;
             //}
-            if (bosshealth.CurrentHealth <= 0)
+            if (health.CurrentHealth <= 0)
             {
                 isDead = true;
                 //Aura.SetActive(false);
