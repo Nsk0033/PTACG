@@ -26,6 +26,8 @@ public class NskBoss : MonoBehaviour
 	private bool isDead;
 	private bool secondPhase;
 	private bool thirdPhase;
+	private float attackCooldownDuration = 3f;
+    private float timeSinceLastAttack = 0f;
 	
 	private bool canUseSkill = true;
 	private float randomAnimationTimer = 0f;
@@ -41,7 +43,7 @@ public class NskBoss : MonoBehaviour
 	[SerializeField] private GameObject Aura1;
 	[SerializeField] private GameObject Aura2;
 	[SerializeField] private Transform ShootPosition1;
-	[SerializeField] private Transform ShootPosition2;
+	//[SerializeField] private Transform ShootPosition2;
 	[SerializeField] private Transform CenterPosition;
 	[SerializeField] private GameObject Player;
 	[SerializeField] private GameObject PlayerEnterCheck;
@@ -52,7 +54,8 @@ public class NskBoss : MonoBehaviour
 	[SerializeField] private GameObject slashPrefab2;
 	[SerializeField] private GameObject explosionPrefab;
 	[SerializeField] private GameObject burstPrefab;
-	[SerializeField] private GameObject ThunderIcon;
+	[SerializeField] private GameObject ThunderIcon1;
+	[SerializeField] private GameObject ThunderIcon2;
 	[SerializeField] private GameObject thunderBirdPrefab;
 	[SerializeField] private GameObject lightningStrike;
 	
@@ -87,16 +90,15 @@ public class NskBoss : MonoBehaviour
 				PlayRandomAnimation();
 				randomAnimationTimer = 0f; // Reset the timer
 			}
-			if(bosshealth.CurrentHealth <= 400)
+			if(bosshealth.CurrentHealth <= 400 && !thirdPhase && bosshealth.CurrentHealth > 250)
 			{
-				ThunderIcon.SetActive(true);
+				ThunderIcon1.SetActive(true);
 				Aura1.SetActive(true);
 				secondPhase = true;
 			}
-			if(bosshealth.CurrentHealth <= 200)
+			else if(bosshealth.CurrentHealth <= 250 && secondPhase)
 			{
-				ThunderIcon.SetActive(false);
-				ThunderIcon.SetActive(true);
+				ThunderIcon2.SetActive(true);
 				Aura2.SetActive(true);
 				thirdPhase = true;
 			}
@@ -180,8 +182,20 @@ public class NskBoss : MonoBehaviour
 				
 			}
 		}
-		
-		
+		if(IsIdle())
+		{
+			canAttack = true;
+			canUseSkill = true;
+		}
+		if (!canAttack)
+        {
+            timeSinceLastAttack += Time.deltaTime;
+            if (timeSinceLastAttack >= attackCooldownDuration)
+            {
+                canAttack = true;
+                timeSinceLastAttack = 0f;
+            }
+        }
     }
 	
 	private void PlayRandomAnimation()
@@ -218,7 +232,7 @@ public class NskBoss : MonoBehaviour
 			// Set the interval for the next random animation
 			
 			randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
-			Invoke("FinishSkill", 1.1f);
+			Invoke("FinishSkill", 2.5f);
 		}
 		else if(secondPhase && !thirdPhase)
 		{
@@ -248,7 +262,7 @@ public class NskBoss : MonoBehaviour
 			// Set the interval for the next random animation
 			
 			randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
-			Invoke("FinishSkill", 1.1f);
+			Invoke("FinishSkill", 2.5f);
 		}
 		else
 		{
@@ -275,7 +289,7 @@ public class NskBoss : MonoBehaviour
 			// Set the interval for the next random animation
 			
 			randomAnimationInterval = Random.Range(minRandomTime, normalRandomTime);
-			Invoke("FinishSkill", 1.1f);
+			Invoke("FinishSkill", 2.5f);
 		}
 	}
 	
@@ -283,6 +297,15 @@ public class NskBoss : MonoBehaviour
     {
         // Check if the magnitude of the velocity is close to zero
         if(currentState == NSK_Cast || currentState == NSK_SwordCast || currentState == NSK100_Atkcombo)
+			return true;
+		else
+			return false;
+	}
+	
+	private bool IsIdle()
+    {
+        // Check if the magnitude of the velocity is close to zero
+        if(currentState == NSK100_Idle || currentState == NSK_Idle)
 			return true;
 		else
 			return false;
@@ -337,19 +360,19 @@ public class NskBoss : MonoBehaviour
 	{
 		Debug.Log("FinishAtk");
 		canAttack = true;
-		ChangeITAAnimationState(NSK_Idle);
+		ChangeITAAnimationState(NSK100_Idle);
 	}
 	
 	private void FinishSkill()
 	{
 		canAttack = true;
 		canUseSkill = true;
-		ChangeITAAnimationState(NSK_Idle);
+		ChangeITAAnimationState(NSK100_Idle);
 	}
 	
 	private void FinishRespawn()
 	{
-		ChangeITAAnimationState(NSK_Idle);
+		ChangeITAAnimationState(NSK100_Idle);
 	}
 	
 	//change animation ========================================================================
@@ -385,17 +408,17 @@ public class NskBoss : MonoBehaviour
 	
 	public void SpawnDarkBoltAndThunderBullet()
 	{
-		Vector3 direction = (Player.transform.position - ShootPosition1.position).normalized;
+		Vector3 direction = (Player.transform.position - CenterPosition.position).normalized;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		Instantiate(darkboltPrefab, ShootPosition1.position, rotation);
+		Instantiate(darkboltPrefab, CenterPosition.position, rotation);
 		
 		Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 10f, Vector3.forward);
 		Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 10f, Vector3.forward);
 		
-		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation);
-		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus10);
-		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus10);
+		Instantiate(thunderBulletPrefab, CenterPosition.position, rotation);
+		Instantiate(thunderBulletPrefab, CenterPosition.position, rotationPlus10);
+		Instantiate(thunderBulletPrefab, CenterPosition.position, rotationMinus10);
 
 		if (secondPhase)
 		{
@@ -404,30 +427,30 @@ public class NskBoss : MonoBehaviour
 			Quaternion rotation180 = Quaternion.AngleAxis(angle + 180f, Vector3.forward);
 			Quaternion rotation270 = Quaternion.AngleAxis(angle + 270f, Vector3.forward);
 
-			Instantiate(darkboltPrefab, ShootPosition1.position, rotation90);
-			Instantiate(darkboltPrefab, ShootPosition1.position, rotation180);
-			Instantiate(darkboltPrefab, ShootPosition1.position, rotation270);
+			Instantiate(darkboltPrefab, CenterPosition.position, rotation90);
+			Instantiate(darkboltPrefab, CenterPosition.position, rotation180);
+			Instantiate(darkboltPrefab, CenterPosition.position, rotation270);
 			
 			Quaternion rotationPlus100 = Quaternion.AngleAxis(angle + 100f, Vector3.forward);
 			Quaternion rotationMinus80 = Quaternion.AngleAxis(angle + 80f, Vector3.forward);
 			
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation90);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus100);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus80);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotation90);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationPlus100);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationMinus80);
 			
 			Quaternion rotationPlus190 = Quaternion.AngleAxis(angle + 190f, Vector3.forward);
 			Quaternion rotationMinus170 = Quaternion.AngleAxis(angle + 170f, Vector3.forward);
 			
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation180);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus190);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus170);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotation180);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationPlus190);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationMinus170);
 			
 			Quaternion rotationPlus280 = Quaternion.AngleAxis(angle + 280f, Vector3.forward);
 			Quaternion rotationMinus260 = Quaternion.AngleAxis(angle + 260f, Vector3.forward);
 			
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation270);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus280);
-			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus260);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotation270);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationPlus280);
+			Instantiate(thunderBulletPrefab, CenterPosition.position, rotationMinus260);
 		
 		}
 	}
@@ -450,10 +473,10 @@ public class NskBoss : MonoBehaviour
 		
 		if(secondPhase && thirdPhase)
 		{
-			Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 30f, Vector3.forward);
-			Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 30f, Vector3.forward);
-			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationPlus10);
-			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationMinus10);
+			Quaternion rotationPlus60 = Quaternion.AngleAxis(angle + 60f, Vector3.forward);
+			Quaternion rotationMinus60 = Quaternion.AngleAxis(angle - 60f, Vector3.forward);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationPlus60);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationMinus60);
 		}
 	}
 	
@@ -574,11 +597,43 @@ public class NskBoss : MonoBehaviour
 		}
 	}
 	
-	public void DoubleSpawn()
+	public void EightDirectionSpawn()
 	{
+		// Loop through 8 directions (45 degrees apart)
+		for (int i = 0; i < 8; i++)
+		{
+			// Calculate the rotation angle for each direction
+			float angle = i * 45f;
+
+			// Convert the angle to a Quaternion rotation
+			Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+			// Spawn the thunderBirdPrefab with the calculated rotation
+			Instantiate(thunderBirdPrefab, CenterPosition.position, rotation);
+			if(thirdPhase)
+			{
+				Instantiate(darkSparkPrefab, CenterPosition.position, rotation);
+			}
+		}
 		
 	}
 	
-	
+	public void RandomDirection()
+	{
+		int randomNumber = Random.Range(0, 3);
+		switch (randomNumber)
+		{
+			case 0:
+				EightDirectionSpawn();
+				break;
+			case 1:
+				SpawnDarkBoltAndThunderBullet();
+				break;
+			case 2:
+				SpawnBurst();
+				break;
+			// Add cases for more animations if needed
+		}
+	}
 
 }
