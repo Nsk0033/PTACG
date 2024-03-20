@@ -31,10 +31,23 @@ public class CharacterWeapon : CharacterComponents
     // Returns the reference to our Current Weapon Aim
     public WeaponAim WeaponAim { get; set; }
 
+    public bool IsBowUpgraded { get; set; }
+    public bool IsSwordUpgraded { get; set; }
+    public bool IsStaffOwned { get; set; }
+    public bool IsYamatoOwned { get; set; }
+
+
     protected override void Start()
     {
         base.Start();
-        if(!isBowUpgraded)
+
+        IsBowUpgraded = isBowUpgraded;
+        IsSwordUpgraded = isSwordUpgraded;
+        IsStaffOwned = isStaffOwned;
+        IsYamatoOwned = isYamatoOwned;
+
+
+        if (!isBowUpgraded)
 		{
 			EquipWeapon(BasicBow, weaponHolderPosition);
 		}	
@@ -185,5 +198,25 @@ public class CharacterWeapon : CharacterComponents
 				UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
 			}
         }
+    }
+	public void SetIsBowUpgraded()
+    {
+		isBowUpgraded = true;
+    }
+	
+	public void SetIsSwordUpgraded()
+    {
+		isSwordUpgraded = true;
+    }
+	
+	public void SetIsStaffOwned()
+    {
+		isStaffOwned = true;
+    }
+
+	
+	public void SetIsYamatoOwned()
+    {
+		isYamatoOwned = true;
     }
 }

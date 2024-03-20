@@ -12,6 +12,9 @@ TagManager:
   - DemonQuest
   - InTheAbyss
   - NskBoss
+  - Crystal
+  - Boss
+  - NoSavePanel
   layers:
   - Default
   - TransparentFX
