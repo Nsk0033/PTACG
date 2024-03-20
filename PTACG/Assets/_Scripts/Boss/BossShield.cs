@@ -19,8 +19,8 @@ public class BossShield : MonoBehaviour
 
     private void Update()
     {
-        CrystalBroken(_BossShield.active);
         SealBroken();
+        CrystalBreak();
     }
 
     private void findCrystals() 
@@ -33,9 +33,10 @@ public class BossShield : MonoBehaviour
         Debug.Log("Crystal List = " + Crystals.Count);
     }
 
-    private void CrystalBroken(bool _BossShieldActivated) 
+    private void CrystalBreak() 
     {
-        if (_BossShieldActivated)
+
+        if (_BossShield.active)
         {
             SpriteRenderer _spriteRenderer = _BossShield.GetComponent<SpriteRenderer>();
             if (Crystals.Count == 3)
@@ -62,7 +63,6 @@ public class BossShield : MonoBehaviour
     private void SealBroken() 
     {
         _shieldBroken = _health.IsShieldBroken;
-        //_shieldBroken = _health.IsShieldBroken;
         if (_shieldBroken)
         {
             _BossShield.SetActive(true);

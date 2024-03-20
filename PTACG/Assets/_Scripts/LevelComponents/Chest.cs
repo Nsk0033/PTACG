@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private float yRandomPosition = 2f;
     
     [SerializeField] private GameObject[] rewards;
+    [SerializeField] private GameObject text;
     
     private bool canReward;
     private bool rewardDelivered;
@@ -18,15 +19,17 @@ public class Chest : MonoBehaviour
 
     private Animator animator;
     private readonly int chestOpenedParameter = Animator.StringToHash("Rewarded");
+    private readonly int newChestOpenedParameter = Animator.StringToHash("BoxOpen");
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        text.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (canReward)
             {
@@ -40,6 +43,7 @@ public class Chest : MonoBehaviour
         if (canReward && !rewardDelivered)
         {
             animator.SetTrigger(chestOpenedParameter);
+            animator.SetTrigger(newChestOpenedParameter);
             rewardRandomPosition.x = Random.Range(-xRandomPosition, xRandomPosition);
             rewardRandomPosition.y = Random.Range(-yRandomPosition, yRandomPosition);
             Instantiate(SelectReward(), transform.position + rewardRandomPosition, Quaternion.identity);
@@ -59,6 +63,12 @@ public class Chest : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canReward = true;
+            if (!rewardDelivered) 
+            {
+                text.SetActive(true);
+            }
+            else
+                text.SetActive(false);
         }
     }
 
@@ -67,6 +77,7 @@ public class Chest : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canReward = false;
+            text.SetActive(false);
         }
-	}
+    }
 }

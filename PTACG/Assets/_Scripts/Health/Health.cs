@@ -66,6 +66,8 @@ public class Health : MonoBehaviour
         {
             TakeDamage(5);
         }
+        //real time update UI
+        UpdateCharacterHealth();
     }
 
     // Take the amount of damage we pass in parameters
@@ -76,10 +78,10 @@ public class Health : MonoBehaviour
             return; // If player cannot take damage, exit the function
         }
 		
-        if (CurrentHealth <= 0)
-        {
-            return;
-        }
+        //if (CurrentHealth <= 0)
+        //{
+        //    return;
+        //}
 
         if (!shieldBroken && character != null && initialShield > 0)
         {

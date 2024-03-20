@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Level6Manager : MonoBehaviour
 {
@@ -18,27 +20,55 @@ public class Level6Manager : MonoBehaviour
     [SerializeField] private GameObject MazeEntrance;
     [SerializeField] private GameObject MainEntrance;
 
+    [Header("Crystal Setting")]
+    [SerializeField] private GameObject BossShield;
+
+    [Header("Win and Lose Menu")]
+    [SerializeField] private GameObject WinMenu;
+    [SerializeField] private GameObject LoseMenu;
+
+    private BoxCollider2D win;
+
     private void Start()
     {
         _TimerUI.text = null;
         health = _Boss.GetComponent<Health>();
         UnlockableWall.SetActive(true);
         MazeEntrance.SetActive(true);
+        MainEntrance.SetActive(false);
+        win = GetComponent<BoxCollider2D>();
+        WinMenu.SetActive(false);
+        LoseMenu.SetActive(false);
     }
 
     private void Update()
     {
         UnlockableWallEnabled();
         EscapeFromDungeon();
+        LockMainEntrance(UnlockableWallEnabled());
+        CrystalDestroy();
     }
 
-    private void UnlockableWallEnabled()
+    private bool UnlockableWallEnabled()
     {
         bool bossShieldBroken = health.IsShieldBroken;
         if (bossShieldBroken)
         {
             UnlockableWall.SetActive(false);
+            return true;
         }
+        else
+            return false;
+    }
+
+    private void LockMainEntrance(bool UnlockableWallEnabled)
+    {
+        if (UnlockableWallEnabled)
+        {
+            MainEntrance.SetActive(true);
+        }
+        else
+            return;
     }
 
     private void EscapeFromDungeon()
@@ -53,8 +83,59 @@ public class Level6Manager : MonoBehaviour
             if (_Timer <= 0)
             {
                 _Timer = 0;
-                //then lost the game
+
+                //SceneManager.LoadScene(Lose);
+                LoseMenu.SetActive(true);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            //SceneManager.LoadScene(Win);
+            WinMenu.SetActive(true);
+        }
+    }
+
+    private void CrystalDestroy()
+    {
+        Debug.Log("health IsShieldBroken" + health.IsShieldBroken);
+        if (health.IsShieldBroken)
+        {
+            GameObject[] crystalsFound = GameObject.FindGameObjectsWithTag("Crystal");
+            foreach (GameObject crustalStored in crystalsFound) 
+            {
+                Debug.Log(crustalStored.name);
+            }
+
+            if (crystalsFound.Length == 0) 
+            {
+                Debug.Log("no crystal found");
+            }
+
+            SpriteRenderer _spriteRenderer = BossShield.GetComponent<SpriteRenderer>();
+
+            if (crystalsFound.Length == 3)
+            {
+                _spriteRenderer.color = new Color(0.96f, 1f, 0.68f);
+            }
+            else if (crystalsFound.Length == 2)
+            {
+                _spriteRenderer.color = new Color(1f, 0.64f, 0.37f);
+            }
+            else if (crystalsFound.Length == 1)
+            {
+                _spriteRenderer.color = new Color(1f, 0.09f, 0f);
+            }
+            else if (crystalsFound.Length == 0)
+            {
+                BossShield.SetActive(false);
+            }
+            else
+                return;
+            Debug.Log("crystalsFound.Length: " + crystalsFound.Length);
         }
     }
 }

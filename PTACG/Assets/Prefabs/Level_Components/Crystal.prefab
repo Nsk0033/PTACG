@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 3102014604232295023}
   - component: {fileID: 7097955310887427847}
   - component: {fileID: 7405916354661202786}
-  m_Layer: 0
+  - component: {fileID: 4225837136601569249}
+  - component: {fileID: 511418250885914227}
+  m_Layer: 8
   m_Name: Crystal
   m_TagString: Crystal
   m_Icon: {fileID: 0}
@@ -152,3 +154,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3.8125}
   m_EdgeRadius: 0
+--- !u!114 &4225837136601569249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632295558433989597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 10
+  maxHealth: 10
+  initialShield: 0
+  maxShield: 0
+  destroyObject: 0
+  damageCooldown: 0.75
+  canTakeDamage: 1
+  timeToDestroy: 2
+--- !u!114 &511418250885914227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632295558433989597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460ab61ccbb45544e9c3230a57ce86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealthBarPrefab: {fileID: 0}
+  offSet: {x: 0, y: 1, z: 0}
+  staffDamage: 4
+  meleeDamage: 4
+  biggerMeleeDamage: 6
+  arrowDamage: 3
+  yamatoDamage: 1
