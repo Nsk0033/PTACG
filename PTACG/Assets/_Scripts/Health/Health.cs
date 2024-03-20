@@ -78,10 +78,10 @@ public class Health : MonoBehaviour
             return; // If player cannot take damage, exit the function
         }
 		
-        if (CurrentHealth <= 0)
-        {
-            return;
-        }
+        //if (CurrentHealth <= 0)
+        //{
+        //    return;
+        //}
 
         if (!shieldBroken && character != null && initialShield > 0)
         {

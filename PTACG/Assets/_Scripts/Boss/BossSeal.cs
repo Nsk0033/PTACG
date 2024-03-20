@@ -9,12 +9,17 @@ public class BossSeal : MonoBehaviour
     private bool _shieldBroken;
     private List<GameObject> Crystals = new List<GameObject>();
     private CircleCollider2D _circleCollider;
+    [SerializeField] private Animator FBAniamtor;
+
+    private float previousShield;
+
 
     private void Start()
     {
         _health = GetComponent<Health>();
         _circleCollider = GetComponent<CircleCollider2D>();
         _BossShield.SetActive(false);
+        previousShield = _health.CurrentShield;
     }
 
     private void Update()
@@ -34,11 +39,15 @@ public class BossSeal : MonoBehaviour
             _BossShield.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void AnimatorTrigger() 
     {
-        if (collision.CompareTag("Bullet"))
+        float currentShield = _health.CurrentShield;
+        if (previousShield < currentShield) 
         {
-            _health.TakeDamage(1);
+            FBAniamtor.SetTrigger("SealGetHurt");
         }
+
+        previousShield = currentShield;
+        FBAniamtor.SetTrigger("SealGetNoHurt");
     }
 }
