@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
-
+		
         if (character != null)
         {
             isPlayer = character.CharacterType == Character.CharacterTypes.Player;
@@ -118,12 +118,27 @@ public class Health : MonoBehaviour
     {
         if (character != null)
         {
-            collider2D.enabled = false;
-            spriteRenderer.enabled = false;
+			if(gameObject.tag == "DemonQuest")
+			{
+				Invoke("DisableAfterTime",timeToDestroy);
+            }
+			if(gameObject.tag == "InTheAbyss")
+			{
+				Invoke("DisableAfterTime",timeToDestroy);
+            }
+			if(gameObject.tag == "NskBoss")
+			{
+				Invoke("DisableAfterTime",timeToDestroy);
+            }
+			else
+			{
+				collider2D.enabled = false;
+				spriteRenderer.enabled = false;
 
-            character.enabled = false;
-            controller.enabled = false;
-        }
+				character.enabled = false;
+				controller.enabled = false;
+			}
+		}
 
         if (bossBaseShot != null)
         {

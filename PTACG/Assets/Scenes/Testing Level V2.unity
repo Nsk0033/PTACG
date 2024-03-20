@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 58684046}
   - component: {fileID: 58684048}
   - component: {fileID: 58684047}
+  - component: {fileID: 58684049}
   m_Layer: 7
   m_Name: Tilemap_Floor
   m_TagString: Untagged
@@ -90015,6 +90016,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &58684049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58684045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &75620262
 GameObject:
   m_ObjectHideFlags: 0
@@ -101479,17 +101496,17 @@ GameObject:
   - component: {fileID: 451587507}
   - component: {fileID: 451587506}
   - component: {fileID: 451587509}
-  - component: {fileID: 451587510}
   - component: {fileID: 451587514}
   - component: {fileID: 451587513}
   - component: {fileID: 451587517}
   - component: {fileID: 451587516}
   - component: {fileID: 451587515}
   - component: {fileID: 451587520}
-  - component: {fileID: 451587522}
   - component: {fileID: 451587521}
   - component: {fileID: 451587523}
   - component: {fileID: 451587524}
+  - component: {fileID: 451587525}
+  - component: {fileID: 451587526}
   m_Layer: 8
   m_Name: DemonQuest_Boss
   m_TagString: DemonQuest
@@ -101632,33 +101649,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.44403195, y: 0.4924469}
   m_EdgeRadius: 0
---- !u!50 &451587510
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451587505}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &451587513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101760,26 +101750,6 @@ MonoBehaviour:
   biggerMeleeDamage: 6
   arrowDamage: 3
   yamatoDamage: 1
---- !u!114 &451587522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451587505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialHealth: 350
-  maxHealth: 350
-  initialShield: 0
-  maxShield: 0
-  destroyObject: 0
-  damageCooldown: 0.75
-  canTakeDamage: 1
-  timeToDestroy: 2
 --- !u!58 &451587523
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -101787,7 +101757,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451587505}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -101824,15 +101794,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 451587505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7757c898c5907448123520943e8c09, type: 3}
+  m_Script: {fileID: 11500000, guid: e0b90931b9b636440b4d552400be1e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 1.2
-  bossMoveSpeed: 50
+  attackDelay: 1.1
+  bossMoveSpeed: 200
+  attackRange: 6
+  stopRange: 5
   Aura: {fileID: 1684308269}
   ShootPosition: {fileID: 1852268111}
   Player: {fileID: 1811728451}
   PlayerEnterCheck: {fileID: 1483334341}
+--- !u!50 &451587525
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451587505}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &451587526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451587505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 350
+  maxHealth: 350
+  initialShield: 0
+  maxShield: 0
+  destroyObject: 0
+  damageCooldown: 0.75
+  canTakeDamage: 1
+  timeToDestroy: 2
 --- !u!1 &459490890
 GameObject:
   m_ObjectHideFlags: 0
@@ -106952,6 +106971,7 @@ GameObject:
   - component: {fileID: 860589316}
   - component: {fileID: 860589317}
   - component: {fileID: 860589318}
+  - component: {fileID: 860589319}
   m_Layer: 7
   m_Name: Tilemap_Wall
   m_TagString: Untagged
@@ -122369,6 +122389,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 860589312}
+--- !u!114 &860589319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860589312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &882865819 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8082574870074312457, guid: 6afa4cf2f9a74eb40ada58e3a784b95f, type: 3}
@@ -129441,6 +129477,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674772374}
   m_CullTransparentMesh: 1
+--- !u!1 &1683176438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1683176439}
+  - component: {fileID: 1683176441}
+  - component: {fileID: 1683176440}
+  m_Layer: 7
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1683176439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683176438}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779745490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683176440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683176438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+--- !u!114 &1683176441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683176438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 23800000, guid: 01030649dd14aae4aa4c23daed91aa60, type: 2}
 --- !u!1 &1684308269
 GameObject:
   m_ObjectHideFlags: 0
@@ -129956,6 +130071,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1683176439}
   - {fileID: 58684046}
   - {fileID: 860589313}
   - {fileID: 209315702}
