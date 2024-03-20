@@ -73,24 +73,6 @@ public class Vendor : MonoBehaviour
 
     public void WatchAd()
     {
-        /*if (ad1played == false)
-        {
-            GameObject.Find("Ad 1").SetActive(true);
-            videoPlayer = GameObject.Find("Ad 1").gameObject.GetComponent<VideoPlayer>();
-            videoPlayer.Play();
-            ad1played = true;
-        }
-        else if (ad1played == true && ad2played == false)
-        {
-            GameObject.Find("Ad 2").SetActive(true);
-            videoPlayer = GameObject.Find("Ad 2").gameObject.GetComponent<VideoPlayer>();
-            videoPlayer.Play();
-            ad2played = true;
-        }
-        else if (ad1played == true && ad2played == true)
-        {
-
-        }*/
         shopPanel.SetActive(false);
         adPanel.SetActive(true);
         ad1.SetActive(true);
