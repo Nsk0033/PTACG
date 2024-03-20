@@ -11,6 +11,7 @@ public class DemonQuestBossFight : MonoBehaviour
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
 	[SerializeField] private GameObject bgm;
+	public bool hasPlayerEnter;
 	
 	
 	
@@ -18,6 +19,7 @@ public class DemonQuestBossFight : MonoBehaviour
     {
         if (!hasTriggered && other.CompareTag("Player"))
         {
+			hasPlayerEnter = true;
 			wall.SetActive(true);
 			wall1.SetActive(true);
 			
@@ -56,12 +58,16 @@ public class DemonQuestBossFight : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
+			hasPlayerEnter = false;
 			if (canva != null)
 			{
 				canva.SetActive(false);
 			}
 			SoundManager.Instance.PlayMusic();
-			bgm.SetActive(false);
+			if (bgm != null)
+				bgm.SetActive(false);
+			else
+				return;
 		}
 		
 	}
@@ -84,7 +90,8 @@ public class DemonQuestBossFight : MonoBehaviour
 	private void OpenGate()
 	{
 		SoundManager.Instance.PlayMusic();
-		bgm.SetActive(false);
+		if (bgm != null)
+				bgm.SetActive(false);
 		canva.SetActive(false);
 		wall.SetActive(false);
 		wall1.SetActive(false);

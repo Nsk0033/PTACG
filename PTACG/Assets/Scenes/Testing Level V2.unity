@@ -101488,6 +101488,8 @@ GameObject:
   - component: {fileID: 451587520}
   - component: {fileID: 451587522}
   - component: {fileID: 451587521}
+  - component: {fileID: 451587523}
+  - component: {fileID: 451587524}
   m_Layer: 8
   m_Name: DemonQuest_Boss
   m_TagString: DemonQuest
@@ -101582,6 +101584,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1684308270}
+  - {fileID: 1852268111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &451587509
@@ -101777,6 +101780,59 @@ MonoBehaviour:
   damageCooldown: 0.75
   canTakeDamage: 1
   timeToDestroy: 2
+--- !u!58 &451587523
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451587505}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.010808408, y: -0.15564108}
+  serializedVersion: 2
+  m_Radius: 0.48016733
+--- !u!114 &451587524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451587505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7757c898c5907448123520943e8c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDelay: 1.2
+  bossMoveSpeed: 50
+  Aura: {fileID: 1684308269}
+  ShootPosition: {fileID: 1852268111}
+  Player: {fileID: 1811728451}
+  PlayerEnterCheck: {fileID: 1483334341}
 --- !u!1 &459490890
 GameObject:
   m_ObjectHideFlags: 0
@@ -127743,6 +127799,7 @@ MonoBehaviour:
   wall: {fileID: 135884740}
   wall1: {fileID: 1116301630}
   bgm: {fileID: 1203891313}
+  hasPlayerEnter: 0
 --- !u!114 &1483334346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129401,7 +129458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1684308270
 Transform:
   m_ObjectHideFlags: 0
@@ -130739,6 +130796,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850530187}
   m_CullTransparentMesh: 1
+--- !u!1 &1852268110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852268111}
+  m_Layer: 8
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1852268111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852268110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.518, y: -0.166, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 451587508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856406477
 GameObject:
   m_ObjectHideFlags: 0
@@ -144813,6 +144901,10 @@ PrefabInstance:
     - target: {fileID: 3220874235325358501, guid: b69df18ce14795c40b07f1f2429c8227, type: 3}
       propertyPath: m_Name
       value: DarkAura
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220874235325358501, guid: b69df18ce14795c40b07f1f2429c8227, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4051596366585166918, guid: b69df18ce14795c40b07f1f2429c8227, type: 3}
       propertyPath: m_SortingLayer

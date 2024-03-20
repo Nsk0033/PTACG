@@ -25,12 +25,25 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         enemyHealth = GetComponent<Health>();
-        if (enemyHealthBarPrefab != null)
-        {
-            enemyBar = Instantiate(enemyHealthBarPrefab, transform.position + offSet, Quaternion.identity);
-            enemyBar.transform.parent = transform;
-            enemyHealthBar = enemyBar.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>();
-        }
+		if (enemyHealthBarPrefab != null)
+		{
+			enemyBar = Instantiate(enemyHealthBarPrefab, transform.position + offSet, Quaternion.identity);
+			enemyBar.transform.parent = transform;
+
+			// Add null checks to ensure the child hierarchy exists
+			if (enemyBar.transform.childCount > 0 && enemyBar.transform.GetChild(0).childCount > 0)
+			{
+				enemyHealthBar = enemyBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+			}
+			else
+			{
+				Debug.LogError("Enemy health bar child hierarchy not found or incomplete.");
+			}
+		}
+		else
+		{
+			Debug.LogError("Enemy health bar prefab is not assigned.");
+		}
     }
 
     private void Update()
