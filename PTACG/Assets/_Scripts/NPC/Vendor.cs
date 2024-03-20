@@ -4,36 +4,32 @@ using System.Collections.Generic;
 //using System.Reflection;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.Video;
+using Random = UnityEngine.Random;
 
 public class Vendor : MonoBehaviour
 {
     [Header("Panels")]
 	[SerializeField] private GameObject popUpPanel;
 	[SerializeField] private GameObject shopPanel;
-    [SerializeField] private GameObject adPanel;
-
-    [Header("Ads")]
-    [SerializeField] private GameObject watchAdButton;
-    [SerializeField] private GameObject ad1;
-    [SerializeField] private GameObject ad2;
+	[SerializeField] private GameObject gachaWinPanel;
 
     [Header("Items")]
     //[SerializeField] private VendorItem weaponItem;
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
-    [Header("Conversation Panel")]
-    [SerializeField] private GameObject VendorConversationPanel;
+    [Header("Settings")]
+    [SerializeField] [Range(0,100)] private float chanceToDrop = 5f;
+    [SerializeField] private Transform placeToDrop;
+	[SerializeField] private int gachaCounter = 0;
+	[SerializeField] private GameObject player;
+	
+	[Header("Rewards")]
+    [SerializeField] private GameObject[] rewards;
     
-
-
+	private bool weaponOwned;
     public bool canOpenShop;
-    private bool ad1played = false;
-    private bool ad2played = false;
     private CharacterWeapon characterWeapon;
-    private VideoPlayer videoPlayer;
 
     private void Update()
     {
@@ -42,7 +38,6 @@ public class Vendor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 shopPanel.SetActive(true);
-                watchAdButton.SetActive(true);
                 popUpPanel.SetActive(false);
             }
         }
@@ -67,59 +62,57 @@ public class Vendor : MonoBehaviour
 	
 	public void BuyGacha()
 	{
-		//gacha script here
-		Debug.Log("Gacha Start!");
+		ProductBought(20);
+		gachaCounter++;
+		if (gachaCounter == 5 && !weaponOwned)
+		{
+			gachaWinPanel.SetActive(true);
+			Invoke("CloseGachaTab",3f);
+        }
+		else
+		{
+			float probability = Random.Range(0, 100);
+			if (probability > chanceToDrop)
+			{
+				Instantiate(SelectReward(), placeToDrop.position, Quaternion.identity);
+			}
+			else if (probability <= chanceToDrop)
+			{
+				if(!weaponOwned)
+				{
+					weaponOwned = true;
+					CharacterWeapon characterWeapon = player.GetComponent<CharacterWeapon>();
+					if (characterWeapon != null)
+					{
+						characterWeapon.SetIsStaffOwned();
+					}
+					else
+					{
+						Debug.LogWarning("CharacterWeapon component not found on the player object.");
+					}
+					gachaWinPanel.SetActive(true);
+					Invoke("CloseGachaTab",3f);
+				}
+				else
+				{
+					Instantiate(SelectReward(), placeToDrop.position, Quaternion.identity);
+				}
+			}
+		}
+		
 	}
-
-    public void WatchAd()
-    {
-        /*if (ad1played == false)
-        {
-            GameObject.Find("Ad 1").SetActive(true);
-            videoPlayer = GameObject.Find("Ad 1").gameObject.GetComponent<VideoPlayer>();
-            videoPlayer.Play();
-            ad1played = true;
-        }
-        else if (ad1played == true && ad2played == false)
-        {
-            GameObject.Find("Ad 2").SetActive(true);
-            videoPlayer = GameObject.Find("Ad 2").gameObject.GetComponent<VideoPlayer>();
-            videoPlayer.Play();
-            ad2played = true;
-        }
-        else if (ad1played == true && ad2played == true)
-        {
-
-        }*/
-        shopPanel.SetActive(false);
-        adPanel.SetActive(true);
-        ad1.SetActive(true);
-        videoPlayer = ad1.GetComponent<VideoPlayer>();
-        videoPlayer.Play();
-
-        StartCoroutine(AnotherAd());
-        StartCoroutine(ResetShopPanel());
-    }
-
-    IEnumerator AnotherAd()
-    {
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(15.0f);
-        ad1.SetActive(false);
-        ad2.SetActive(true);
-        videoPlayer = ad2.GetComponent<VideoPlayer>();
-        videoPlayer.Play();
-    }
-
-    IEnumerator ResetShopPanel()
-    {
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(30.0f);
-        ad2.SetActive(false);
-        shopPanel.SetActive(true);
-        watchAdButton.SetActive(false);
-    }
-
+	
+	private void CloseGachaTab()
+	{
+		gachaWinPanel.SetActive(false);
+	}
+	
+	private GameObject SelectReward()
+	{
+		int randomRewardIndex = Random.Range(0, rewards.Length);
+		return rewards[randomRewardIndex];
+	}
+	
     /*private void BuyItems()
     {
 
@@ -166,6 +159,5 @@ public class Vendor : MonoBehaviour
     private void ProductBought(int amount)
     {
         CoinManager.Instance.RemoveCoins(amount);
-        
     }
 }

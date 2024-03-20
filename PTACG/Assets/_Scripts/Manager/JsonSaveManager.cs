@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
+using UnityEngine.SceneManagement;
 
 public class JsonSaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //OnSaveBtnClick();
-    }
-
+    private PauseManager pauseManager;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Delete))
@@ -27,10 +22,20 @@ public class JsonSaveManager : MonoBehaviour
     public void OnSaveBtnClick() 
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) 
+
+        if (player != null)
         {
             PlayerData playerData = new PlayerData();
             playerData.currentPosition = player.transform.position;
+            playerData.currentHealth = player.GetComponent<Health>().CurrentHealth;
+            playerData.currentHealth = player.GetComponent<Health>().CurrentShield;
+            playerData.currentMoney = CoinManager.Instance.Coins.ToString();
+            playerData.currentScene = pauseManager.CurrentScene;
+
+            playerData.isBowUpgraded = player.GetComponent<CharacterWeapon>().IsBowUpgraded;
+            playerData.isSwordUpgraded = player.GetComponent<CharacterWeapon>().IsSwordUpgraded;
+            playerData.isStaffOwned = player.GetComponent<CharacterWeapon>().IsStaffOwned;
+            playerData.isYamatoOwned = player.GetComponent<CharacterWeapon>().IsYamatoOwned;
 
             string jsonWrite = JsonUtility.ToJson(playerData);
             Debug.Log("json write = " + jsonWrite);
@@ -41,7 +46,7 @@ public class JsonSaveManager : MonoBehaviour
 
     public void OnLoadBtnClick() 
     {
-        GameObject setPlayerPostion = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (File.Exists(Application.dataPath + "/saveFile.json"))
         {
@@ -49,7 +54,19 @@ public class JsonSaveManager : MonoBehaviour
             Debug.Log("json read = " + jsonRead);
             
             PlayerData playerLoaded = JsonUtility.FromJson<PlayerData>(jsonRead);
-            setPlayerPostion.transform.localPosition = playerLoaded.currentPosition;
+
+            SceneManager.LoadScene(playerLoaded.currentScene);
+            player.transform.localPosition = playerLoaded.currentPosition;
+            player.GetComponent<Health>().CurrentHealth = playerLoaded.currentHealth;
+            player.GetComponent<Health>().CurrentShield = playerLoaded.currentShield;
+            //current scene
+            CoinManager.Instance.Coins = int.Parse(playerLoaded.currentMoney);
+
+            player.GetComponent<CharacterWeapon>().IsBowUpgraded = playerLoaded.isBowUpgraded;
+            player.GetComponent<CharacterWeapon>().IsSwordUpgraded = playerLoaded.isSwordUpgraded;
+            player.GetComponent<CharacterWeapon>().IsStaffOwned = playerLoaded.isStaffOwned;
+            player.GetComponent<CharacterWeapon>().IsYamatoOwned = playerLoaded.isYamatoOwned;
+
         }
     }
 
@@ -57,19 +74,19 @@ public class JsonSaveManager : MonoBehaviour
     {
         //Player information
         public Vector2 currentPosition;
-        public int currentHealth;
-        public int currentShield;
-        public int currentMoney;
-        public int currentScene;
-
-        //Player weapon
-        //public int currentAmmo;
+        public float currentHealth;
+        public float currentShield;
+        public string currentMoney;
+        public string currentScene;
 
         //weapon information
         public bool isBowUpgraded;
         public bool isSwordUpgraded;
         public bool isStaffOwned;
         public bool isYamatoOwned;
+
+        //boss information
+
     }
 
 }
