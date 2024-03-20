@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ITABoss : MonoBehaviour
+public class NskBoss : MonoBehaviour
 {
-	const string ITA_Idle = "InTheAbyss_Boss-Idle";
-	const string ITA_Walk = "InTheAbyss_Boss-Walk";
-	const string ITA_AtkC = "InTheAbyss_Boss-AttackCombo";
-	const string ITA_AtkD = "InTheAbyss_Boss-AttackDown";
-	const string ITA_Dash = "InTheAbyss_Boss-DashAttack";
-	const string ITA_Cast = "InTheAbyss_Boss-Cast";
-	const string ITA_Summon = "InTheAbyss_Boss-Summon";
-	const string ITA_Respawn = "InTheAbyss_Boss-Respawn";
-	const string ITA_Start = "InTheAbyss_Boss-Start";
+	const string NSK_Idle = "Nsk_idle";
+	const string NSK_Walk = "Nsk_Walk";
+	const string NSK_Cast = "Nsk_cast";
+	const string NSK_Aoe = "Nsk_aoe";
+	const string NSK_SwordCast = "Nsk_swordcast";
+	const string NSK100_Atk = "Nsk100_atk";
+	const string NSK100_Atkcombo = "Nsk100_atkcombo";
+	const string NSK100_Battlecry = "Nsk100_battlecry";
+	const string NSK100_Idle = "Nsk100_idle";
+	const string NSK100_Walk = "Nsk100_walk";
+	const string NSK100_Swordatk = "Nsk100_swordatk";
 	
 	private string currentState;
 	Rigidbody2D rb2d;
@@ -23,32 +25,36 @@ public class ITABoss : MonoBehaviour
 	private bool canAttack = true;
 	private bool isDead;
 	private bool secondPhase;
-	private bool respawn;
+	private bool thirdPhase;
+	
 	private bool canUseSkill = true;
 	private float randomAnimationTimer = 0f;
 	private float randomAnimationInterval = 0f;
 	
-	[SerializeField] private float attackDelay = 2.55f;
-	[SerializeField] private float bossMoveSpeed = 130f;
+	[SerializeField] private float attackDelay = 1.5f;
+	[SerializeField] private float bossMoveSpeed = 150f;
 	[SerializeField] private float attackRange = 6f;
 	[SerializeField] private float stopRange = 5f;
-	[SerializeField] private float normalRandomTime = 7f;
-	[SerializeField] private float secondPhaseRandomTime = 5f;
+	[SerializeField] private float normalRandomTime = 6f;
+	[SerializeField] private float secondPhaseRandomTime = 4.5f;
 	[SerializeField] private float minRandomTime = 2f;
-	[SerializeField] private GameObject Aura;
-	[SerializeField] private Transform ShootPosition;
+	[SerializeField] private GameObject Aura1;
+	[SerializeField] private GameObject Aura2;
+	[SerializeField] private Transform ShootPosition1;
+	[SerializeField] private Transform ShootPosition2;
 	[SerializeField] private Transform CenterPosition;
 	[SerializeField] private GameObject Player;
 	[SerializeField] private GameObject PlayerEnterCheck;
 	[SerializeField] private GameObject darkboltPrefab;
 	[SerializeField] private GameObject thunderBulletPrefab;
 	[SerializeField] private GameObject darkSparkPrefab;
-	[SerializeField] private GameObject slashPrefab;
+	[SerializeField] private GameObject slashPrefab1;
+	[SerializeField] private GameObject slashPrefab2;
 	[SerializeField] private GameObject explosionPrefab;
 	[SerializeField] private GameObject burstPrefab;
 	[SerializeField] private GameObject ThunderIcon;
-	[SerializeField] private GameObject Demon;
-	[SerializeField] private GameObject Memory;
+	[SerializeField] private GameObject thunderBirdPrefab;
+	[SerializeField] private GameObject lightningStrike;
 	
 	//private Coroutine randomAnimationCoroutine;
 	
@@ -68,15 +74,9 @@ public class ITABoss : MonoBehaviour
     void FixedUpdate()
     {
 		ITABossTrigger itabt = PlayerEnterCheck.GetComponent<ITABossTrigger>();
-		if(!respawn && !itabt.hasPlayerEnter)
-			ChangeITAAnimationState(ITA_Start);
-		else if(!respawn && itabt.hasPlayerEnter)
-		{
-			Demon.SetActive(true);
-			ChangeITAAnimationState(ITA_Respawn);
-			Invoke("FinishRespawn",8f);
-		}
-		else
+		if(!itabt.hasPlayerEnter)
+			ChangeITAAnimationState(NSK_Idle);
+		if(itabt.hasPlayerEnter)
 		{
 			// Update the random animation timer
 			randomAnimationTimer += Time.deltaTime;
@@ -87,21 +87,30 @@ public class ITABoss : MonoBehaviour
 				PlayRandomAnimation();
 				randomAnimationTimer = 0f; // Reset the timer
 			}
-			if(bosshealth.CurrentHealth <= 200)
+			if(bosshealth.CurrentHealth <= 400)
 			{
 				ThunderIcon.SetActive(true);
-				Aura.SetActive(true);
+				Aura1.SetActive(true);
 				secondPhase = true;
+			}
+			if(bosshealth.CurrentHealth <= 200)
+			{
+				ThunderIcon.SetActive(false);
+				ThunderIcon.SetActive(true);
+				Aura2.SetActive(true);
+				thirdPhase = true;
 			}
 			if(bosshealth.CurrentHealth <= 0)
 			{
 				isDead = true;
-				Aura.SetActive(false);
+				Aura1.SetActive(false);
+				Aura2.SetActive(false);
 				secondPhase = false;
+				thirdPhase = false;
 			}
 			if (IsNotMoving() && canAttack && !IsAttacking() && !isDead )
 			{
-				ChangeITAAnimationState(ITA_Idle);
+				ChangeITAAnimationState(NSK_Idle);
 			}
 			
 			
@@ -114,8 +123,21 @@ public class ITABoss : MonoBehaviour
 					canAttack = false;
 					if(!IsAttacking())
 					{
-						ChangeITAAnimationState(ITA_AtkC);
-						Invoke("FinishAtk",attackDelay);
+						if(!secondPhase && !thirdPhase)
+						{
+							ChangeITAAnimationState(NSK_Cast);
+							Invoke("FinishAtk",attackDelay);
+						}
+						else if(secondPhase && !thirdPhase)
+						{
+							ChangeITAAnimationState(NSK_SwordCast);
+							Invoke("FinishAtk",attackDelay);
+						}
+						else if(secondPhase && !thirdPhase)
+						{
+							ChangeITAAnimationState(NSK100_Atkcombo);
+							Invoke("FinishAtk",attackDelay);
+						}
 					}
 				}
 				else if (outsideAtkRange() && !IsAttacking())
@@ -150,7 +172,10 @@ public class ITABoss : MonoBehaviour
 							spriteRenderer.transform.localScale = new Vector3(Mathf.Abs(spriteRenderer.transform.localScale.x), spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
 						}
 					}
-					ChangeITAAnimationState(ITA_Walk);
+					if(secondPhase && thirdPhase)
+						ChangeITAAnimationState(NSK100_Walk);
+					else
+						ChangeITAAnimationState(NSK_Walk);
 				}
 				
 			}
@@ -162,45 +187,102 @@ public class ITABoss : MonoBehaviour
 	private void PlayRandomAnimation()
 	{
 		// Choose a random animation
-		int randomAnimation = Random.Range(0, 4); // Assuming you have 3 animations (0, 1, 2)
-		string animationToPlay = ITA_AtkD; // Default to idle animation
-
-		switch (randomAnimation)
+		if(secondPhase && thirdPhase)
 		{
-			case 0:
-				animationToPlay = ITA_AtkD;
-				break;
-			case 1:
-				animationToPlay = ITA_AtkC;
-				break;
-			case 2:
-				animationToPlay = ITA_Summon;
-				break;
-			case 3:
-				animationToPlay = ITA_Cast;
-				break;
-			// Add cases for more animations if needed
+			int randomAnimation = Random.Range(0, 5); // Assuming you have 3 animations (0, 1, 2)
+			string animationToPlay = NSK100_Battlecry; // Default to idle animation
+
+			switch (randomAnimation)
+			{
+				case 0:
+					animationToPlay = NSK100_Atk;
+					break;
+				case 1:
+					animationToPlay = NSK100_Atkcombo;
+					break;
+				case 2:
+					animationToPlay = NSK100_Battlecry;
+					break;
+				case 3:
+					animationToPlay = NSK100_Swordatk;
+					break;
+				case 4:
+					animationToPlay = NSK_SwordCast;
+					break;
+				// Add cases for more animations if needed
+			}
+
+			// Play the chosen animation
+			ChangeITAAnimationState(animationToPlay);
+			Debug.Log("RandomAnimation");
+			// Set the interval for the next random animation
+			
+			randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
+			Invoke("FinishSkill", 1.1f);
 		}
-
-		// Play the chosen animation
-		ChangeITAAnimationState(animationToPlay);
-		Debug.Log("RandomAnimation");
-		// Set the interval for the next random animation
-		if(!secondPhase)
+		else if(secondPhase && !thirdPhase)
 		{
-			randomAnimationInterval = Random.Range(minRandomTime, normalRandomTime);
-		}	
+			int randomAnimation = Random.Range(0, 4); // Assuming you have 3 animations (0, 1, 2)
+			string animationToPlay = NSK_SwordCast; // Default to idle animation
+
+			switch (randomAnimation)
+			{
+				case 0:
+					animationToPlay = NSK_Aoe;
+					break;
+				case 1:
+					animationToPlay = NSK_Cast;
+					break;
+				case 2:
+					animationToPlay = NSK_SwordCast;
+					break;
+				case 3:
+					animationToPlay = NSK100_Atk;
+					break;
+				// Add cases for more animations if needed
+			}
+
+			// Play the chosen animation
+			ChangeITAAnimationState(animationToPlay);
+			Debug.Log("RandomAnimation");
+			// Set the interval for the next random animation
+			
+			randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
+			Invoke("FinishSkill", 1.1f);
+		}
 		else
 		{
-			randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
+			int randomAnimation = Random.Range(0, 3); // Assuming you have 3 animations (0, 1, 2)
+			string animationToPlay = NSK_Aoe; // Default to idle animation
+
+			switch (randomAnimation)
+			{
+				case 0:
+					animationToPlay = NSK_Aoe;
+					break;
+				case 1:
+					animationToPlay = NSK_Cast;
+					break;
+				case 2:
+					animationToPlay = NSK_SwordCast;
+					break;
+				// Add cases for more animations if needed
+			}
+
+			// Play the chosen animation
+			ChangeITAAnimationState(animationToPlay);
+			Debug.Log("RandomAnimation");
+			// Set the interval for the next random animation
+			
+			randomAnimationInterval = Random.Range(minRandomTime, normalRandomTime);
+			Invoke("FinishSkill", 1.1f);
 		}
-		Invoke("FinishSkill", 1.1f);
 	}
 	
 	private bool IsAttacking()
     {
         // Check if the magnitude of the velocity is close to zero
-        if(currentState == ITA_AtkC || currentState == ITA_AtkD)
+        if(currentState == NSK_Cast || currentState == NSK_SwordCast || currentState == NSK100_Atkcombo)
 			return true;
 		else
 			return false;
@@ -255,21 +337,19 @@ public class ITABoss : MonoBehaviour
 	{
 		Debug.Log("FinishAtk");
 		canAttack = true;
-		ChangeITAAnimationState(ITA_Idle);
+		ChangeITAAnimationState(NSK_Idle);
 	}
 	
 	private void FinishSkill()
 	{
 		canAttack = true;
 		canUseSkill = true;
-		ChangeITAAnimationState(ITA_Idle);
+		ChangeITAAnimationState(NSK_Idle);
 	}
 	
 	private void FinishRespawn()
 	{
-		Memory.SetActive(false);
-		respawn = true;
-		ChangeITAAnimationState(ITA_Idle);
+		ChangeITAAnimationState(NSK_Idle);
 	}
 	
 	//change animation ========================================================================
@@ -291,7 +371,7 @@ public class ITABoss : MonoBehaviour
 		switch (randomNumber)
 		{
 			case 0:
-				SpawnDarkBolt();
+				SpawnDarkBoltAndThunderBullet();
 				break;
 			case 1:
 				SpawnDarkSpark();
@@ -303,12 +383,19 @@ public class ITABoss : MonoBehaviour
 		}
 	}
 	
-	public void SpawnDarkBolt()
+	public void SpawnDarkBoltAndThunderBullet()
 	{
-		Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+		Vector3 direction = (Player.transform.position - ShootPosition1.position).normalized;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		Instantiate(darkboltPrefab, ShootPosition.position, rotation);
+		Instantiate(darkboltPrefab, ShootPosition1.position, rotation);
+		
+		Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 10f, Vector3.forward);
+		Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 10f, Vector3.forward);
+		
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation);
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus10);
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus10);
 
 		if (secondPhase)
 		{
@@ -317,48 +404,78 @@ public class ITABoss : MonoBehaviour
 			Quaternion rotation180 = Quaternion.AngleAxis(angle + 180f, Vector3.forward);
 			Quaternion rotation270 = Quaternion.AngleAxis(angle + 270f, Vector3.forward);
 
-			Instantiate(darkboltPrefab, ShootPosition.position, rotation90);
-			Instantiate(darkboltPrefab, ShootPosition.position, rotation180);
-			Instantiate(darkboltPrefab, ShootPosition.position, rotation270);
+			Instantiate(darkboltPrefab, ShootPosition1.position, rotation90);
+			Instantiate(darkboltPrefab, ShootPosition1.position, rotation180);
+			Instantiate(darkboltPrefab, ShootPosition1.position, rotation270);
+			
+			Quaternion rotationPlus100 = Quaternion.AngleAxis(angle + 100f, Vector3.forward);
+			Quaternion rotationMinus80 = Quaternion.AngleAxis(angle + 80f, Vector3.forward);
+			
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation90);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus100);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus80);
+			
+			Quaternion rotationPlus190 = Quaternion.AngleAxis(angle + 190f, Vector3.forward);
+			Quaternion rotationMinus170 = Quaternion.AngleAxis(angle + 170f, Vector3.forward);
+			
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation180);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus190);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus170);
+			
+			Quaternion rotationPlus280 = Quaternion.AngleAxis(angle + 280f, Vector3.forward);
+			Quaternion rotationMinus260 = Quaternion.AngleAxis(angle + 260f, Vector3.forward);
+			
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation270);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus280);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus260);
+		
 		}
 	}
 
 	public void SpawnDarkSpark()
 	{
-		Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+		Vector3 direction = (Player.transform.position - ShootPosition1.position).normalized;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		Instantiate(darkSparkPrefab, ShootPosition.position, rotation);
+		Instantiate(darkSparkPrefab, ShootPosition1.position, rotation);
 
 		if (secondPhase)
 		{
 			// Spawn two additional birds, one at +10 degrees and one at -10 degrees from the player direction
 			Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 30f, Vector3.forward);
 			Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 30f, Vector3.forward);
-			Instantiate(darkSparkPrefab, ShootPosition.position, rotationPlus10);
-			Instantiate(darkSparkPrefab, ShootPosition.position, rotationMinus10);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationPlus10);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationMinus10);
+		}
+		
+		if(secondPhase && thirdPhase)
+		{
+			Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 30f, Vector3.forward);
+			Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 30f, Vector3.forward);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationPlus10);
+			Instantiate(darkSparkPrefab, ShootPosition1.position, rotationMinus10);
 		}
 	}
 	
 	public void SpawnThunderBullet()
 	{
-		Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+		Vector3 direction = (Player.transform.position - ShootPosition1.position).normalized;
 		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 10f, Vector3.forward);
 		Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 10f, Vector3.forward);
 		
-		Instantiate(thunderBulletPrefab, ShootPosition.position, rotation);
-		Instantiate(thunderBulletPrefab, ShootPosition.position, rotationPlus10);
-		Instantiate(thunderBulletPrefab, ShootPosition.position, rotationMinus10);
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotation);
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus10);
+		Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus10);
 
 		if (secondPhase)
 		{
 			// Spawn two additional birds, one at +10 degrees and one at -10 degrees from the player direction
 			Quaternion rotationPlus20 = Quaternion.AngleAxis(angle + 20f, Vector3.forward);
 			Quaternion rotationMinus20 = Quaternion.AngleAxis(angle - 20f, Vector3.forward);
-			Instantiate(thunderBulletPrefab, ShootPosition.position, rotationPlus20);
-			Instantiate(thunderBulletPrefab, ShootPosition.position, rotationMinus20);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationPlus20);
+			Instantiate(thunderBulletPrefab, ShootPosition1.position, rotationMinus20);
 		}
 	}
 	
@@ -367,7 +484,7 @@ public class ITABoss : MonoBehaviour
 		Instantiate(explosionPrefab, CenterPosition.position, Quaternion.identity);
 	}
 	
-	public void SpawnSlash()
+	public void SpawnSlash1()
 	{
 		// Get the direction the boss is facing
 		Vector3 bossDirection = spriteRenderer.transform.localScale.x > 0 ? Vector3.right : Vector3.left;
@@ -383,7 +500,26 @@ public class ITABoss : MonoBehaviour
 		Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
 		// Spawn the Slash with the calculated rotation
-		Instantiate(slashPrefab, CenterPosition.position, rotation);
+		Instantiate(slashPrefab1, CenterPosition.position, rotation);
+	}
+	
+	public void SpawnSlash2()
+	{
+		// Get the direction the boss is facing
+		Vector3 bossDirection = spriteRenderer.transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+
+		// Calculate the rotation angle based on the boss's facing direction
+		float angle = Vector3.Angle(Vector3.right, bossDirection);
+		if (bossDirection.y < 0)
+		{
+			angle = 360f - angle;
+		}
+
+		// Create a rotation from the angle
+		Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+		// Spawn the Slash with the calculated rotation
+		Instantiate(slashPrefab2, CenterPosition.position, rotation);
 	}
 	
 	public void SpawnBurst()
@@ -410,8 +546,24 @@ public class ITABoss : MonoBehaviour
 			for (int i = 0; i < 10; i++)
 			{
 				// Generate random offsets for X and Y within ±10 range
-				float offsetX = Random.Range(-6f, 6f);
-				float offsetY = Random.Range(-6f, 6f);
+				float offsetX = Random.Range(-5f, 5f);
+				float offsetY = Random.Range(-5f, 5f);
+
+				// Calculate the spawn position around the player
+				Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
+
+				// Instantiate the burstPrefab at the calculated position
+				Instantiate(burstPrefab, spawnPosition, Quaternion.identity);
+			}
+		}
+		if(secondPhase && thirdPhase)
+		{
+			// Loop to spawn 5 burstPrefabs
+			for (int i = 0; i < 5; i++)
+			{
+				// Generate random offsets for X and Y within ±10 range
+				float offsetX = Random.Range(-3f, 3f);
+				float offsetY = Random.Range(-3f, 3f);
 
 				// Calculate the spawn position around the player
 				Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
@@ -421,4 +573,12 @@ public class ITABoss : MonoBehaviour
 			}
 		}
 	}
+	
+	public void DoubleSpawn()
+	{
+		
+	}
+	
+	
+
 }
