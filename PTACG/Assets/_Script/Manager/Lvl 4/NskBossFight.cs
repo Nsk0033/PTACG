@@ -69,6 +69,8 @@ public class NskBossFight : MonoBehaviour
 				}
 			}
 		}
+		
+			
     }
 	
 	
@@ -98,6 +100,21 @@ public class NskBossFight : MonoBehaviour
             OpenGate();
             gateOpened = true; // Set the flag to true after opening the gate
         }
+		if(!boss.activeSelf)
+		{
+			if (player != null)
+			{
+				CharacterWeapon characterWeapon = player.GetComponent<CharacterWeapon>();
+				if (characterWeapon != null)
+				{
+					characterWeapon.SetIsYamatoOwned();
+				}
+				else
+				{
+					Debug.LogWarning("CharacterWeapon component not found on player GameObject.");
+				}
+			}
+		}
     }
 	
 	private void OpenGate()

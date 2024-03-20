@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1421755710849936176}
   - component: {fileID: 7931506487548255235}
   - component: {fileID: 8020724659697282599}
+  - component: {fileID: 6844830186898694384}
   m_Layer: 0
   m_Name: SwordSlashParticle
   m_TagString: Untagged
@@ -106,3 +107,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6844830186898694384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181923680817648610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abed87b69615e0444aa498cb40f824f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMask:
+    serializedVersion: 2
+    m_Bits: 64
+  speed: 0
+  duration: 0.5
+  damage: 10
+  canDestroy: 0

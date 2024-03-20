@@ -196,11 +196,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   speed: 10
   duration: 10
   damage: 3
-  canDestroy: 1
+  canDestroy: 0
 --- !u!114 &2770599247391856659
 MonoBehaviour:
   m_ObjectHideFlags: 0
