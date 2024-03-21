@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Actions/Melee Attack", fileName = "MeleeAttack")]
 public class ActionMeleeAttack : AIAction
 {
+    //private readonly int useMeeleAtk = Animator.StringToHash("UseMeleeAtk");
+
     public override void Act(StateController controller)
     {
         Attack(controller);
@@ -17,7 +19,9 @@ public class ActionMeleeAttack : AIAction
         controller.CharacterMovement.SetVertical(0f);
 
         // Attack
-        controller.CharacterWeapon.CurrentWeapon.UseWeapon();
+        //controller.CharacterWeapon.CurrentWeapon.UseWeapon();
+
         
+
     }
 }

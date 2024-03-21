@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
-  coinsToAdd: 20
+  coinsToAdd: 5
 --- !u!95 &1632299898049244294
 Animator:
   serializedVersion: 5

@@ -27,9 +27,25 @@ public class ComponentBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") && other.gameObject.layer != 11)		
         {
-            TakeDamage();
+			TakeDamage();		
+        }
+		if (other.CompareTag("Arrow") && other.gameObject.layer != 11)		
+        {
+			TakeDamage();		
+        }
+		if (other.CompareTag("Melee") && other.gameObject.layer != 11)		
+        {
+			TakeDamage();		
+        }
+		if (other.CompareTag("BiggerMelee") && other.gameObject.layer != 11)		
+        {
+			TakeDamage();		
+        }
+		if (other.CompareTag("YamatoWeapon") && other.gameObject.layer != 11)		
+        {
+			TakeDamage();		
         }
     }
 
