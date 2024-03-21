@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7405916354661202786}
   - component: {fileID: 4225837136601569249}
   - component: {fileID: 511418250885914227}
+  - component: {fileID: 8452084047535158359}
   m_Layer: 8
   m_Name: Crystal
   m_TagString: Crystal
@@ -193,3 +194,18 @@ MonoBehaviour:
   biggerMeleeDamage: 6
   arrowDamage: 3
   yamatoDamage: 1
+--- !u!114 &8452084047535158359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632295558433989597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764621f9a3cfc0e44b7bf4dd7cdea745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 1
+  characterSprite: {fileID: 632295558433989597}
+  characterAnimator: {fileID: 7097955310887427847}
