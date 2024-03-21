@@ -11,6 +11,7 @@ public class DemonQuestBossFight : MonoBehaviour
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
 	[SerializeField] private GameObject bgm;
+	[SerializeField] private GameObject potions;
 	public bool hasPlayerEnter;
 	
 	
@@ -89,6 +90,7 @@ public class DemonQuestBossFight : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		potions.SetActive(true);
 		SoundManager.Instance.PlayMusic();
 		if (bgm != null)
 				bgm.SetActive(false);
