@@ -118,7 +118,14 @@ public class Health : MonoBehaviour
     // Kills the game object
     private void Die()
     {
-        if (character != null)
+		if(gameObject.tag == "Minion")
+		{
+			JarReward reward = gameObject.GetComponent<JarReward>();
+			if(reward != null)
+				reward.GiveReward();
+			DestroyObject(gameObject);
+		}
+        if (character != null && !destroyObject)
         {
 			if(gameObject.tag == "DemonQuest")
 			{
@@ -139,7 +146,7 @@ public class Health : MonoBehaviour
                 
 				character.enabled = false;
 				controller.enabled = false;
-
+				
                 
             }
 		}
@@ -152,7 +159,7 @@ public class Health : MonoBehaviour
 
         if (destroyObject)
         {
-            DestroyObject();
+            DisableAfterTime();
         }
     }
 	
@@ -196,10 +203,6 @@ public class Health : MonoBehaviour
     }
 	
     // If destroyObject is selected, we destroy this game object
-    private void DestroyObject()
-    {
-        gameObject.SetActive(false);
-    }
 
     private void UpdateCharacterHealth()
     {
