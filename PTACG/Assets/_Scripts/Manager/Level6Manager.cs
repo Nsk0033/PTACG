@@ -23,6 +23,10 @@ public class Level6Manager : MonoBehaviour
     [Header("Crystal Setting")]
     [SerializeField] private GameObject BossShield;
 
+    [Header("Win and Lose Menu")]
+    [SerializeField] private GameObject WinMenu;
+    [SerializeField] private GameObject LoseMenu;
+
     private BoxCollider2D win;
 
     private void Start()
@@ -33,6 +37,8 @@ public class Level6Manager : MonoBehaviour
         MazeEntrance.SetActive(true);
         MainEntrance.SetActive(false);
         win = GetComponent<BoxCollider2D>();
+        WinMenu.SetActive(false);
+        LoseMenu.SetActive(false);
     }
 
     private void Update()
@@ -79,6 +85,7 @@ public class Level6Manager : MonoBehaviour
                 _Timer = 0;
 
                 //SceneManager.LoadScene(Lose);
+                LoseMenu.SetActive(true);
             }
         }
     }
@@ -88,6 +95,7 @@ public class Level6Manager : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             //SceneManager.LoadScene(Win);
+            WinMenu.SetActive(true);
         }
     }
 

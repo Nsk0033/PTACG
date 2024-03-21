@@ -208,7 +208,6 @@ public class CharacterWeapon : CharacterComponents
         {
 			if(Lvl4UIManager.Instance != null)
 			{
-				Lvl4UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);                
 				Lvl4UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
 			}
             else if(UIManager.Instance != null)

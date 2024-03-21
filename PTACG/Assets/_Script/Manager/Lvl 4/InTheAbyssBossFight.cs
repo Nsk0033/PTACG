@@ -11,6 +11,7 @@ public class InTheAbyssBossFight : MonoBehaviour
 	[SerializeField] private GameObject wall;
 	[SerializeField] private GameObject wall1;
 	[SerializeField] private GameObject bgm;
+	[SerializeField] private GameObject potions;
 	
 	
     private void OnTriggerEnter2D(Collider2D other)
@@ -81,6 +82,7 @@ public class InTheAbyssBossFight : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		potions.SetActive(true);
 		SoundManager.Instance.PlayMusic();
 		bgm.SetActive(false);
 		canva.SetActive(false);
