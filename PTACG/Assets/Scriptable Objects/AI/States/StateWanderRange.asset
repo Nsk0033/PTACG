@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc8810b5be995dc4fb502bdb32b862d1, type: 3}
-  m_Name: StateWander
+  m_Name: StateWanderRange
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 11400000, guid: b7cc3a87a09906341bed974558e23076, type: 2}

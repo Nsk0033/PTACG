@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/Actions/Melee Attack", fileName = "MeleeAttack")]
-public class ActionMeleeAttack : AIAction
+[CreateAssetMenu(menuName = "AI/Actions/Slime Range", fileName = "SlimeRange")]
+public class ActionSlimeRange : AIAction
 {
-    //private readonly int useMeeleAtk = Animator.StringToHash("UseMeleeAtk");
-
     public override void Act(StateController controller)
     {
         Attack(controller);
@@ -20,8 +18,5 @@ public class ActionMeleeAttack : AIAction
 
         // Attack
         //controller.CharacterWeapon.CurrentWeapon.UseWeapon();
-
-        
-
     }
 }

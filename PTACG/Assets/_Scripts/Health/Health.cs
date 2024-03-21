@@ -136,10 +136,12 @@ public class Health : MonoBehaviour
 			{
 				collider2D.enabled = false;
 				spriteRenderer.enabled = false;
-
+                
 				character.enabled = false;
 				controller.enabled = false;
-			}
+
+                
+            }
 		}
 
         if (bossBaseShot != null)
