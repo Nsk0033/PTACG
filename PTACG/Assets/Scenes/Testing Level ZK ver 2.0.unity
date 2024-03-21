@@ -91496,7 +91496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &196053840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99127,7 +99127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1835843659}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JsonSaveManager, Assembly-CSharp
         m_MethodName: OnSaveBtnClick
         m_Mode: 1
@@ -122379,6 +122379,7 @@ MonoBehaviour:
   wall: {fileID: 135884740}
   wall1: {fileID: 0}
   bgm: {fileID: 0}
+  hasPlayerEnter: 0
 --- !u!1 &1498016066
 GameObject:
   m_ObjectHideFlags: 0
@@ -123948,9 +123949,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPanel: {fileID: 118722317}
   shopPanel: {fileID: 762399061}
+  gachaWinPanel: {fileID: 0}
+  adPanel: {fileID: 0}
+  watchAdButton: {fileID: 0}
+  ad1: {fileID: 0}
+  ad2: {fileID: 0}
   healthItem: {fileID: 11400000, guid: 3d1424f69b910124680942116928bce5, type: 2}
   shieldItem: {fileID: 11400000, guid: 4d649024ab3c96a4ca80c8a07b8586cf, type: 2}
-  VendorConversationPanel: {fileID: 0}
+  chanceToDrop: 5
+  placeToDrop: {fileID: 0}
+  gachaCounter: 0
+  player: {fileID: 0}
+  rewards: []
   canOpenShop: 0
 --- !u!70 &1737980871
 CapsuleCollider2D:
@@ -124475,7 +124485,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1835843658}
   - component: {fileID: 1835843657}
-  - component: {fileID: 1835843659}
   m_Layer: 0
   m_Name: PauseManager
   m_TagString: Untagged
@@ -124511,18 +124520,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1835843659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835843656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2127e80724f9bda4c9de6c76fa8c0687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1856406477
 GameObject:
   m_ObjectHideFlags: 0
@@ -125139,7 +125136,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1835843659}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JsonSaveManager, Assembly-CSharp
         m_MethodName: OnLoadBtnClick
         m_Mode: 1
@@ -132583,6 +132580,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074469997}
   m_CullTransparentMesh: 0
+--- !u!1 &2078495785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078495787}
+  - component: {fileID: 2078495786}
+  m_Layer: 0
+  m_Name: JsonSaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2078495786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078495785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2127e80724f9bda4c9de6c76fa8c0687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2078495787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078495785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2079481417
 GameObject:
   m_ObjectHideFlags: 0
@@ -133755,6 +133796,7 @@ SceneRoots:
   - {fileID: 1158905239}
   - {fileID: 1707190593}
   - {fileID: 120201115}
+  - {fileID: 2078495787}
   - {fileID: 1835843658}
   - {fileID: 417669685}
   - {fileID: 44463215}

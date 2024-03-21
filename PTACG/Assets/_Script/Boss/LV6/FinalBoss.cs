@@ -17,7 +17,7 @@ public class FinalBoss : MonoBehaviour
     Rigidbody2D rb2d;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    private Health bosshealth;
+    //private Health bosshealth;
     //private CircleCollider2D circle2d;
     private bool canAttack = true;
     private bool isDead;
@@ -27,7 +27,7 @@ public class FinalBoss : MonoBehaviour
     private float randomAnimationTimer = 0f;
     private float randomAnimationInterval = 0f;
 
-    [SerializeField] private float attackDelay = 2.55f;
+    [SerializeField] private float attackDelay = 1.1f;
     [SerializeField] private float bossMoveSpeed = 130f;
     [SerializeField] private float attackRange = 6f;
     [SerializeField] private float stopRange = 5f;
@@ -66,7 +66,7 @@ public class FinalBoss : MonoBehaviour
     {
 
         rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         //bosshealth = GetComponentInParent<Health>();
         //circle2d = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -93,7 +93,7 @@ public class FinalBoss : MonoBehaviour
             //    Aura.SetActive(true);
             //    secondPhase = true;
             //}
-            if (bosshealth.CurrentHealth <= 0)
+            if (health.CurrentHealth <= 0)
             {
                 isDead = true;
                 //Aura.SetActive(false);

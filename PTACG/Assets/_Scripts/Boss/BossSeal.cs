@@ -9,7 +9,7 @@ public class BossSeal : MonoBehaviour
     private bool _shieldBroken;
     private List<GameObject> Crystals = new List<GameObject>();
     private CircleCollider2D _circleCollider;
-    [SerializeField] private Animator FBAniamtor;
+    //[SerializeField] private Animator FBAniamtor;
 
     private float previousShield;
 
@@ -39,7 +39,7 @@ public class BossSeal : MonoBehaviour
             _BossShield.SetActive(false);
     }
 
-    private void AnimatorTrigger() 
+    /*private void AnimatorTrigger() 
     {
         float currentShield = _health.CurrentShield;
         if (previousShield < currentShield) 
@@ -49,5 +49,5 @@ public class BossSeal : MonoBehaviour
 
         previousShield = currentShield;
         FBAniamtor.SetTrigger("SealGetNoHurt");
-    }
+    }*/
 }
