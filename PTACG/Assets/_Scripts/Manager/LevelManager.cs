@@ -1,29 +1,37 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private Character playableCharacter;
-	[SerializeField] private Transform spawnPosition;
+    [SerializeField] private Transform spawnPosition;
 
     public Transform Boss { get; set; }
     public Transform Player { get; set; }
-    
+
+    private float timer;
     protected override void Awake()
-    { 
-		if (Boss != null)
-		{
-			Boss = GameObject.Find("Enemy Boss/Boss").transform;
-		}
-		else
-		{
-			return;
-		}
+    {
+        if (Boss != null)
+        {
+            Boss = GameObject.Find("Slime Boss").gameObject.transform;
+
+        }
+        else
+        {
+            return;
+        }
         Player = playableCharacter.transform;
         Camera2D.Instance.Target = playableCharacter.transform;
-	}
+    }
+    private void Start()
+    {
+        Player.transform.position = spawnPosition.position;
+        StartCoroutine(Countdown10());
+    }
 
     // Update is called once per frame
     private void Update()
@@ -41,5 +49,12 @@ public class LevelManager : Singleton<LevelManager>
             playableCharacter.GetComponent<Health>().Revive();
             playableCharacter.transform.position = spawnPosition.position;
         }
+    }
+    private IEnumerator Countdown10()
+    {
+        yield return new WaitForSeconds(10);
+        GameObject KillBoss = GameObject.Find("Slime Boss").gameObject;
+        Debug.Log("boss = " + KillBoss.name);
+        GameObject.Destroy(KillBoss);
     }
 }
