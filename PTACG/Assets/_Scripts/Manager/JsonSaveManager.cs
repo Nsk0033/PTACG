@@ -8,7 +8,7 @@ public class JsonSaveManager : MonoBehaviour
 {
     private void Start()
     {
-        LoadWithoutScene();
+        LoadWithoutPosition();
         OnSaveBtnClick();
     }
 
@@ -132,6 +132,34 @@ public class JsonSaveManager : MonoBehaviour
             //SceneManager.LoadScene(playerLoaded.currentScene);
 
             player.transform.localPosition = playerLoaded.currentPosition;
+            player.GetComponent<Health>().CurrentHealth = playerLoaded.currentHealth;
+            player.GetComponent<Health>().CurrentShield = playerLoaded.currentShield;
+            //current scene
+            CoinManager.Instance.Coins = int.Parse(playerLoaded.currentMoney);
+
+            player.GetComponent<CharacterWeapon>().IsBowUpgraded = playerLoaded.isBowUpgraded;
+            Debug.Log("get set upgraded " + player.GetComponent<CharacterWeapon>().IsBowUpgraded);
+            Debug.Log("data get set upgraded " + playerLoaded.isBowUpgraded);
+            player.GetComponent<CharacterWeapon>().IsSwordUpgraded = playerLoaded.isSwordUpgraded;
+            player.GetComponent<CharacterWeapon>().IsStaffOwned = playerLoaded.isStaffOwned;
+            player.GetComponent<CharacterWeapon>().IsYamatoOwned = playerLoaded.isYamatoOwned;
+        }
+        else
+            return;
+    }
+    public void LoadWithoutPosition()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (File.Exists(Application.dataPath + "/saveFile.json"))
+        {
+            string jsonRead = File.ReadAllText(Application.dataPath + "/saveFile.json");
+            Debug.Log("json read = " + jsonRead);
+
+            PlayerData playerLoaded = JsonUtility.FromJson<PlayerData>(jsonRead);
+
+            //SceneManager.LoadScene(playerLoaded.currentScene);
+
             player.GetComponent<Health>().CurrentHealth = playerLoaded.currentHealth;
             player.GetComponent<Health>().CurrentShield = playerLoaded.currentShield;
             //current scene

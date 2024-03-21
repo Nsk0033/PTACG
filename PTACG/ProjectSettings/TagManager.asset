@@ -15,6 +15,7 @@ TagManager:
   - Crystal
   - Boss
   - NoSavePanel
+  - PlayerSpawner
   layers:
   - Default
   - TransparentFX

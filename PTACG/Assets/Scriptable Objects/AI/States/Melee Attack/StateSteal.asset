@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StateSteal
   m_EditorClassIdentifier: 
   Actions:
-  - {fileID: 11400000, guid: da6c7e3df0b1b8042b34374d8865b268, type: 2}
+  - {fileID: 11400000, guid: f3a6eb161eaee83448f47ccd41b44fc6, type: 2}
   Transitions:
   - Decision: {fileID: 11400000, guid: d93a6938ce1a18a44861595b95255a0e, type: 2}
     TrueState: {fileID: 11400000, guid: 3bb5d89846b94e345901a7894afc2a72, type: 2}

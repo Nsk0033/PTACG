@@ -27,7 +27,7 @@ public class Level6Manager : MonoBehaviour
     [SerializeField] private GameObject WinMenu;
     [SerializeField] private GameObject LoseMenu;
 
-    private BoxCollider2D win;
+    //private BoxCollider2D win;
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class Level6Manager : MonoBehaviour
         UnlockableWall.SetActive(true);
         MazeEntrance.SetActive(true);
         MainEntrance.SetActive(false);
-        win = GetComponent<BoxCollider2D>();
+        //win = GetComponent<BoxCollider2D>();
         WinMenu.SetActive(false);
         LoseMenu.SetActive(false);
     }
@@ -86,16 +86,20 @@ public class Level6Manager : MonoBehaviour
 
                 //SceneManager.LoadScene(Lose);
                 LoseMenu.SetActive(true);
+                Time.timeScale = LoseMenu.active ? 0 : 1;
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("someone cum");
         if (other.CompareTag("Player")) 
         {
+            Debug.Log("player cum");
             //SceneManager.LoadScene(Win);
             WinMenu.SetActive(true);
+            Time.timeScale = WinMenu.active ? 0 : 1;
         }
     }
 

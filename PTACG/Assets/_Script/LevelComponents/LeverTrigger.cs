@@ -16,17 +16,25 @@ public class LeverTrigger : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        if (canTakeAction && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("success");
+            spriteRenderer.sprite = sprite;
+            poisonGas.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             text.SetActive(true);
             canTakeAction = true;
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                spriteRenderer.sprite = sprite;
-                poisonGas.SetActive(false);
-            }
+            Debug.Log("player enter");
+            Debug.Log(canTakeAction);
+            Debug.Log(Input.GetKeyDown(KeyCode.E));
         }
     }
 

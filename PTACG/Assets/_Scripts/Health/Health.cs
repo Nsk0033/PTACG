@@ -134,6 +134,10 @@ public class Health : MonoBehaviour
             }
 			else
 			{
+                if (gameObject.CompareTag("Crystal")) 
+                {
+                    gameObject.SetActive(false);
+                }
 				collider2D.enabled = false;
 				spriteRenderer.enabled = false;
 
