@@ -14,7 +14,7 @@ public class NskBossFight : MonoBehaviour
 	[SerializeField] private GameObject bgm;
 	[SerializeField] private GameObject player;
 	[SerializeField] private int deathTimer = 0;
-	
+	[SerializeField] private GameObject potions;
 	
 	
     private void OnTriggerEnter2D(Collider2D other)
@@ -119,6 +119,7 @@ public class NskBossFight : MonoBehaviour
 	
 	private void OpenGate()
 	{
+		potions.SetActive(true);
 		SoundManager.Instance.PlayMusic();
 		bgm.SetActive(false);
 		canva.SetActive(false);

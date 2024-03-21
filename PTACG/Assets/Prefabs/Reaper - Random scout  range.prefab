@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 6903697380003669879}
   - component: {fileID: 1120818118961613450}
   - component: {fileID: -5539294669911472683}
+  - component: {fileID: 5788735758609327689}
   m_Layer: 8
   m_Name: Reaper - Random scout  range
   m_TagString: Minion
@@ -394,3 +395,19 @@ MonoBehaviour:
   - {fileID: 5465494419006318531, guid: e2811f5088e982b4d87b31fc570c40f5, type: 3}
   - {fileID: 5465494419006318531, guid: 115e5da5014fd59469122fb1201cc59c, type: 3}
   - {fileID: 5465494419006318531, guid: 0a60264c92995714c934ee9448e42c2a, type: 3}
+--- !u!114 &5788735758609327689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973990309801184760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6774ce3d88a80469bd9170f68434a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectArea: 13
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
