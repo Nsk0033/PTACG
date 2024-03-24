@@ -141,19 +141,23 @@ public class Health : MonoBehaviour
 			{
 				Invoke("DisableAfterTime",timeToDestroy);
             }
-			else
-			{
-                if (gameObject.CompareTag("Crystal")) 
+            if (gameObject.CompareTag("Boss")) 
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                if (gameObject.CompareTag("Crystal"))
                 {
                     gameObject.SetActive(false);
                 }
-				collider2D.enabled = false;
-				spriteRenderer.enabled = false;
-                
-				character.enabled = false;
-				controller.enabled = false;
-				
-                
+                collider2D.enabled = false;
+                spriteRenderer.enabled = false;
+
+                character.enabled = false;
+                controller.enabled = false;
+
+
             }
 		}
 
