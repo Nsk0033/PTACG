@@ -119117,9 +119117,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPanel: {fileID: 118722317}
   shopPanel: {fileID: 762399061}
+  gachaWinPanel: {fileID: 0}
+  adPanel: {fileID: 0}
+  watchAdButton: {fileID: 0}
+  ad1: {fileID: 0}
+  ad2: {fileID: 0}
   healthItem: {fileID: 11400000, guid: 3d1424f69b910124680942116928bce5, type: 2}
   shieldItem: {fileID: 11400000, guid: 4d649024ab3c96a4ca80c8a07b8586cf, type: 2}
-  VendorConversationPanel: {fileID: 0}
+  chanceToDrop: 5
+  placeToDrop: {fileID: 0}
+  gachaCounter: 0
+  player: {fileID: 0}
+  rewards: []
   canOpenShop: 0
 --- !u!70 &1737980871
 CapsuleCollider2D:

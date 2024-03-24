@@ -17,7 +17,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (Boss != null)
         {
-            Boss = GameObject.Find("Slime Boss").gameObject.transform;
+            Boss = GameObject.Find("Boss").gameObject.transform;
 
         }
         else
@@ -26,11 +26,6 @@ public class LevelManager : Singleton<LevelManager>
         }
         Player = playableCharacter.transform;
         Camera2D.Instance.Target = playableCharacter.transform;
-    }
-    private void Start()
-    {
-        Player.transform.position = spawnPosition.position;
-        StartCoroutine(Countdown10());
     }
 
     // Update is called once per frame
@@ -49,12 +44,5 @@ public class LevelManager : Singleton<LevelManager>
             playableCharacter.GetComponent<Health>().Revive();
             playableCharacter.transform.position = spawnPosition.position;
         }
-    }
-    private IEnumerator Countdown10()
-    {
-        yield return new WaitForSeconds(10);
-        GameObject KillBoss = GameObject.Find("Slime Boss").gameObject;
-        Debug.Log("boss = " + KillBoss.name);
-        GameObject.Destroy(KillBoss);
     }
 }

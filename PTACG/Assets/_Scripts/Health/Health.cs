@@ -147,7 +147,7 @@ public class Health : MonoBehaviour
 				character.enabled = false;
 				controller.enabled = false;
 				
-                
+                gameObject.SetActive(false);
             }
 		}
 
@@ -186,6 +186,7 @@ public class Health : MonoBehaviour
         CurrentShield = initialShield;
 
         shieldBroken = false;
+        canTakeDamage = true;
        
         UpdateCharacterHealth();
     }
