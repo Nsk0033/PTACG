@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class ThiefAnimation : MonoBehaviour
@@ -32,7 +31,7 @@ public class ThiefAnimation : MonoBehaviour
         {
             if (isSteal == false) 
             {
-                int randomNumber = Random.Range(25, 100);
+                int randomNumber = Random.Range(1, 10);
                 CoinManager.Instance.Coins -= randomNumber;
                 if (CoinManager.Instance.Coins <= 0) 
                 {
