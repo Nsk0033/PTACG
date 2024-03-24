@@ -16,7 +16,7 @@ public class FinalBoss : MonoBehaviour
     private string currentState;
     Rigidbody2D rb2d;
     Animator animator;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     //private Health bosshealth;
     //private CircleCollider2D circle2d;
     private bool canAttack = true;
@@ -32,7 +32,7 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private float attackRange = 6f;
     [SerializeField] private float stopRange = 5f;
     [SerializeField] private float normalRandomTime = 7f;
-    [SerializeField] private float secondPhaseRandomTime = 5f;
+    //[SerializeField] private float secondPhaseRandomTime = 5f;
     [SerializeField] private float minRandomTime = 2f;
 
     [Header("FinalBoss Projectile")]
@@ -49,15 +49,7 @@ public class FinalBoss : MonoBehaviour
     //[SerializeField] private Transform CenterPosition;
     [SerializeField] private GameObject Player;
     //[SerializeField] private GameObject PlayerEnterCheck;
-    //[SerializeField] private GameObject darkboltPrefab;
-    //[SerializeField] private GameObject thunderBulletPrefab;
-    //[SerializeField] private GameObject darkSparkPrefab;
-    //[SerializeField] private GameObject slashPrefab;
     //[SerializeField] private GameObject explosionPrefab;
-    //[SerializeField] private GameObject burstPrefab;
-    //[SerializeField] private GameObject ThunderIcon;
-    //[SerializeField] private GameObject Demon;
-    //[SerializeField] private GameObject Memory;
 
     //private Coroutine randomAnimationCoroutine;
 
@@ -88,17 +80,14 @@ public class FinalBoss : MonoBehaviour
                 PlayRandomAnimation();
                 randomAnimationTimer = 0f; // Reset the timer
             }
-            //if (bosshealth.CurrentHealth <= 200)
-            //{
-            //    Aura.SetActive(true);
-            //    secondPhase = true;
-            //}
+
             if (health.CurrentHealth <= 0)
             {
                 isDead = true;
                 //Aura.SetActive(false);
                 //secondPhase = false;
             }
+
             if (IsNotMoving() && canAttack && !IsAttacking() && !isDead)
             {
                 ChangeITAAnimationState(FinalBossIdle);
@@ -187,10 +176,10 @@ public class FinalBoss : MonoBehaviour
         {
             randomAnimationInterval = Random.Range(minRandomTime, normalRandomTime);
         }
-        else
-        {
-            randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
-        }
+        //else
+        //{
+        //    randomAnimationInterval = Random.Range(minRandomTime, secondPhaseRandomTime);
+        //}
         Invoke("FinishSkill", 1.1f);
     }
 
@@ -242,13 +231,6 @@ public class FinalBoss : MonoBehaviour
         ChangeITAAnimationState(FinalBossIdle);
     }
 
-    //private void FinishRespawn()
-    //{
-    //    Memory.SetActive(false);
-    //    respawn = true;
-    //    ChangeITAAnimationState(FinalBossIdle);
-    //}
-
     //change animation ========================================================================
     private void ChangeITAAnimationState(string newState)
     {
@@ -286,67 +268,9 @@ public class FinalBoss : MonoBehaviour
         }
     }
 
-    //public void SpawnDarkBolt()
-    //{
-    //    Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
-    //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //    Instantiate(darkboltPrefab, ShootPosition.position, rotation);
-
-    //    if (secondPhase)
-    //    {
-    //        // Spawn additional darkboltPrefabs at angles +90, +180, and +270 on the Z-axis
-    //        Quaternion rotation90 = Quaternion.AngleAxis(angle + 90f, Vector3.forward);
-    //        Quaternion rotation180 = Quaternion.AngleAxis(angle + 180f, Vector3.forward);
-    //        Quaternion rotation270 = Quaternion.AngleAxis(angle + 270f, Vector3.forward);
-
-    //        Instantiate(darkboltPrefab, ShootPosition.position, rotation90);
-    //        Instantiate(darkboltPrefab, ShootPosition.position, rotation180);
-    //        Instantiate(darkboltPrefab, ShootPosition.position, rotation270);
-    //    }
-    //}
-
-    //public void SpawnDarkSpark()
-    //{
-    //    Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
-    //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //    Instantiate(darkSparkPrefab, ShootPosition.position, rotation);
-
-    //    if (secondPhase)
-    //    {
-    //        // Spawn two additional birds, one at +10 degrees and one at -10 degrees from the player direction
-    //        Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 30f, Vector3.forward);
-    //        Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 30f, Vector3.forward);
-    //        Instantiate(darkSparkPrefab, ShootPosition.position, rotationPlus10);
-    //        Instantiate(darkSparkPrefab, ShootPosition.position, rotationMinus10);
-    //    }
-    //}
-
-    //public void SpawnThunderBullet()
-    //{
-    //    Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
-    //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //    Quaternion rotationPlus10 = Quaternion.AngleAxis(angle + 10f, Vector3.forward);
-    //    Quaternion rotationMinus10 = Quaternion.AngleAxis(angle - 10f, Vector3.forward);
-
-    //    Instantiate(thunderBulletPrefab, ShootPosition.position, rotation);
-    //    Instantiate(thunderBulletPrefab, ShootPosition.position, rotationPlus10);
-    //    Instantiate(thunderBulletPrefab, ShootPosition.position, rotationMinus10);
-
-    //    if (secondPhase)
-    //    {
-    //        // Spawn two additional birds, one at +10 degrees and one at -10 degrees from the player direction
-    //        Quaternion rotationPlus20 = Quaternion.AngleAxis(angle + 20f, Vector3.forward);
-    //        Quaternion rotationMinus20 = Quaternion.AngleAxis(angle - 20f, Vector3.forward);
-    //        Instantiate(thunderBulletPrefab, ShootPosition.position, rotationPlus20);
-    //        Instantiate(thunderBulletPrefab, ShootPosition.position, rotationMinus20);
-    //    }
-    //}
-
     public void SpawnProjectile()
     {
+        Debug.Log("SpawnProjectile");
         Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -355,6 +279,7 @@ public class FinalBoss : MonoBehaviour
 
     public void SpawnChargedProjectile() 
     {
+        Debug.Log("SpawnChargedProjectile");
         Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -363,6 +288,7 @@ public class FinalBoss : MonoBehaviour
 
     public void Spawn360DegreeProjectile()
     {
+        Debug.Log("Spawn360Projectile");
         float angleIncreament = 45f;
         Quaternion[] directions = new Quaternion[8];
 
@@ -380,60 +306,16 @@ public class FinalBoss : MonoBehaviour
 
     public void Spawn360DegreeChargedProjectile()
     {
+        Debug.Log("Spawn360DegreeProjectile");
         float angleIncreament = 45f;
         Quaternion[] directions = new Quaternion[8];
-
-        //Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         for (int i = 0; i < 8; i++)
         {
             float angle = i * angleIncreament;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             Instantiate(FB_ChargedProjectile, ShootPosition.position, rotation);
+            Debug.Log(FB_ChargedProjectile);
         }
     }
-
-
-    //public void SpawnExplosion()
-    //{
-    //    Instantiate(explosionPrefab, CenterPosition.position, Quaternion.identity);
-    //}
-
-    //public void SpawnSlash()
-    //{
-    //    // Get the direction the boss is facing
-    //    Vector3 bossDirection = spriteRenderer.flipX ? Vector3.left : Vector3.right;
-
-    //    // Calculate the rotation angle based on the boss's facing direction
-    //    float angle = Vector3.Angle(Vector3.right, bossDirection);
-    //    if (bossDirection.y < 0)
-    //    {
-    //        angle = 360f - angle;
-    //    }
-
-    //    // Create a rotation from the angle
-    //    Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-
-    //    // Spawn the Slash with the calculated rotation
-    //    Instantiate(slashPrefab, CenterPosition.position, rotation);
-    //}
-
-    //public void SpawnBurst()
-    //{
-    //    // Loop to spawn 5 burstPrefabs
-    //    for (int i = 0; i < 5; i++)
-    //    {
-    //        // Generate random offsets for X and Y within ±10 range
-    //        float offsetX = Random.Range(-10f, 10f);
-    //        float offsetY = Random.Range(-10f, 10f);
-
-    //        // Calculate the spawn position around the player
-    //        Vector3 spawnPosition = Player.transform.position + new Vector3(offsetX, offsetY, 0f);
-
-    //        // Instantiate the burstPrefab at the calculated position
-    //        Instantiate(burstPrefab, spawnPosition, Quaternion.identity);
-    //    }
-    //}
 }

@@ -22,8 +22,20 @@ public class EnemyHealth : MonoBehaviour
     private float enemyCurrentHealth;
     private float enemyMaxHealth;
 
+    public int DamageStaff { get; set; }
+    public int DamageMelee { get; set; }
+    public int DamageArrow { get; set; }
+    public int DamageYamato { get; set; }
+    public int DamageBiggerMelee { get; set; }
+
     private void Start()
     {
+        DamageStaff = staffDamage;
+        DamageMelee = meleeDamage;
+        DamageArrow = arrowDamage;
+        DamageYamato = yamatoDamage;
+        DamageBiggerMelee = biggerMeleeDamage;
+
         enemyHealth = GetComponent<Health>();
 		if (enemyHealthBarPrefab != null)
 		{

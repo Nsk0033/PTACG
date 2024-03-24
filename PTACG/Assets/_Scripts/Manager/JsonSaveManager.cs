@@ -8,8 +8,14 @@ public class JsonSaveManager : MonoBehaviour
 {
     private void Start()
     {
-        LoadWithoutPosition();
-        OnSaveBtnClick();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            LoadWithoutPosition();
+            OnSaveBtnClick();
+        }
+        else
+            return;
+
     }
 
     private void Update()

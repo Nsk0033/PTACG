@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
     // Returns the current health of this character
     public float CurrentShield { get; set; }
+    public bool CanTakeDamage { get; set; }
     public bool IsShieldBroken => shieldBroken;
     
     private void Awake()
@@ -51,6 +52,7 @@ public class Health : MonoBehaviour
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
+        CanTakeDamage = canTakeDamage;
 		
         if (character != null)
         {

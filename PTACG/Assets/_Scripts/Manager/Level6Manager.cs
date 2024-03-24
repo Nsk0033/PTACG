@@ -93,10 +93,10 @@ public class Level6Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("someone cum");
+        //Debug.Log("someone cum");
         if (other.CompareTag("Player")) 
         {
-            Debug.Log("player cum");
+            //Debug.Log("player cum");
             //SceneManager.LoadScene(Win);
             WinMenu.SetActive(true);
             Time.timeScale = WinMenu.active ? 0 : 1;
@@ -109,15 +109,6 @@ public class Level6Manager : MonoBehaviour
         if (health.IsShieldBroken)
         {
             GameObject[] crystalsFound = GameObject.FindGameObjectsWithTag("Crystal");
-            foreach (GameObject crustalStored in crystalsFound) 
-            {
-                Debug.Log(crustalStored.name);
-            }
-
-            if (crystalsFound.Length == 0) 
-            {
-                Debug.Log("no crystal found");
-            }
 
             SpriteRenderer _spriteRenderer = BossShield.GetComponent<SpriteRenderer>();
 
@@ -135,11 +126,12 @@ public class Level6Manager : MonoBehaviour
             }
             else if (crystalsFound.Length == 0)
             {
-                BossShield.SetActive(false);
+                //BossShield.SetActive(false);
+                Destroy(BossShield);
             }
             else
                 return;
-            Debug.Log("crystalsFound.Length: " + crystalsFound.Length);
+            //Debug.Log("crystalsFound.Length: " + crystalsFound.Length);
         }
     }
 }
