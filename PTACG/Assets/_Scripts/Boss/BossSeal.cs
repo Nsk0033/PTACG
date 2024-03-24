@@ -40,7 +40,7 @@ public class BossSeal : MonoBehaviour
             else if(!_BossShield.active && sealBreak)
             {
                 Debug.Log("health become 30");
-                _health.CurrentHealth = 30f;
+                _health.CurrentHealth = 100f;
                 sealBreak = false;
             }
 
