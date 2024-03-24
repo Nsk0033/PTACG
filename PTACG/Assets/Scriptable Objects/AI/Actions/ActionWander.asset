@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb8c22729393cc4bb9261280255470c, type: 3}
   m_Name: ActionWander
   m_EditorClassIdentifier: 
-  wanderArea: 3
-  wanderTime: 2
+  wanderArea: 6
+  wanderTime: 1
   obstacleBoxCheckSize: {x: 2, y: 2}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
