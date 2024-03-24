@@ -12,6 +12,14 @@ public class BossDie : MonoBehaviour
     [SerializeField]private Transform player;
     [SerializeField]private TextMeshProUGUI textMeshPro;
 
+    [Header("Timer Setting")]
+    [SerializeField] private float _Timer;
+    [SerializeField] private TextMeshProUGUI _TimerUI;
+
+    private void Start()
+    {
+        _TimerUI.text = null;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -19,12 +27,21 @@ public class BossDie : MonoBehaviour
         {
             StopAllCoroutines();
             textMeshPro.text = "Press P to resurrect";
+            _TimerUI.text = null;
+            _Timer = 30;
         }
 
         else
         {
             StartCoroutine(Countdown30());
             textMeshPro.text = "Survive for 30 seconds";
+
+            _TimerUI.text = "Run!" + "\n" + _Timer.ToString();
+            _Timer -= Time.deltaTime;
+            if(_Timer <= 0)
+            {
+                _TimerUI.text = "You have succeeded";
+            }
         }
     }
 

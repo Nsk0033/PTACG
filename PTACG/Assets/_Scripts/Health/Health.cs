@@ -193,6 +193,7 @@ public class Health : MonoBehaviour
 
             character.enabled = true;
             controller.enabled = true;
+            canTakeDamage = true;
         }
 
         gameObject.SetActive(true);
