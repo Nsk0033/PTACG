@@ -162,6 +162,7 @@ public class Vendor : MonoBehaviour
 
         StartCoroutine(AnotherAd());
         StartCoroutine(ResetShopPanel());
+        CoinManager.Instance.AddCoins(20);
     }
 
     IEnumerator AnotherAd()

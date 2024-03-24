@@ -8,6 +8,7 @@ using UnityEngine;
 public class BossDie : MonoBehaviour
 {
     [SerializeField]private Transform portal;
+    [SerializeField] private Transform coins;
     [SerializeField]private Transform player;
     [SerializeField]private TextMeshProUGUI textMeshPro;
 
@@ -32,5 +33,6 @@ public class BossDie : MonoBehaviour
         yield return new WaitForSeconds(30);
         GameObject.Destroy(this.gameObject);
         portal.gameObject.SetActive(true);
+        coins.gameObject.SetActive(true);
     }
 }
