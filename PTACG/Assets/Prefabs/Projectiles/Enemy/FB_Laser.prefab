@@ -14,13 +14,13 @@ GameObject:
   - component: {fileID: 188861719842358376}
   - component: {fileID: 5569610742802984280}
   - component: {fileID: 5789045804918173914}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FB_Laser
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6551842287677219044
 Transform:
   m_ObjectHideFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speed: 0
-  duration: 90
+  duration: 1.5
   damage: 20
   canDestroy: 0
+  setFalse: 0

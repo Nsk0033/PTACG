@@ -12,6 +12,7 @@ public class FinalBoss : MonoBehaviour
     const string FinalBossDeath = "FinalBossDeath";
     const string FinalBossSealDefault = "FinalBossSealDefault";
 
+    [SerializeField] private GameObject bgm;
 
     private string currentState;
     Rigidbody2D rb2d;
@@ -38,9 +39,10 @@ public class FinalBoss : MonoBehaviour
     [Header("FinalBoss Projectile")]
     [SerializeField] private GameObject FB_ChargedProjectile;
     [SerializeField] private GameObject FB_Projectile;
+    [SerializeField] private GameObject FB_HugeChargedProjectile;
+    [SerializeField] private GameObject FB_HugeProjectile;
     [SerializeField] private GameObject FB_LaserCast;
     [SerializeField] private Transform LaserCastTransform;
-
     [SerializeField] private Health health;
 
     [Header("reference")]
@@ -63,7 +65,6 @@ public class FinalBoss : MonoBehaviour
         //circle2d = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         //randomAnimationCoroutine = StartCoroutine(PlayRandomAnimation());
-
     }
 
     // Update is called once per frame
@@ -71,6 +72,18 @@ public class FinalBoss : MonoBehaviour
     {
         if(health.CurrentShield <= 0)
         {
+            UIManager uiManager = GameObject.FindObjectOfType<UIManager>();
+            bgm.SetActive(true);
+            SoundManager.Instance.StopMusic();
+            if (uiManager != null)
+            {
+                uiManager.StartCoroutine(uiManager.BossFight());
+            }
+            else
+            {
+                Debug.LogWarning("Lvl4UIManager component not found in the scene.");
+            }
+
             // Update the random animation timer
             randomAnimationTimer += Time.deltaTime;
 
@@ -103,7 +116,7 @@ public class FinalBoss : MonoBehaviour
                     canAttack = false;
                     if (!IsAttacking())
                     {
-                        ChangeITAAnimationState(FinalBossMelee);
+                        ChangeITAAnimationState(FinalBossRange);
                         Invoke("FinishAtk", attackDelay);
                     }
                 }
@@ -151,21 +164,21 @@ public class FinalBoss : MonoBehaviour
     private void PlayRandomAnimation()
     {
         // Choose a random animation
-        int randomAnimation = Random.Range(0, 4); // Assuming you have 3 animations (0, 1, 2)
+        int randomAnimation = Random.Range(0, 3); // Assuming you have 3 animations (0, 1, 2)
         string animationToPlay = FinalBossMelee; // Default to idle animation
 
         switch (randomAnimation)
         {
             case 0:
-                animationToPlay = FinalBossMelee;
+                Debug.Log("CastLser");
+                animationToPlay = FinalBossRange;
                 break;
             case 1:
                 animationToPlay = FinalBossRange;
                 break;
             case 2:
-                animationToPlay = FinalBossLaserCast;
+                animationToPlay = FinalBossRange;
                 break;
-                // Add cases for more animations if needed
         }
 
         // Play the chosen animation
@@ -246,7 +259,7 @@ public class FinalBoss : MonoBehaviour
 
     public void RandomProjectile()
     {
-        int randomNumber = Random.Range(0, 4);
+        int randomNumber = Random.Range(0, 8);
         switch (randomNumber)
         {
             case 0:
@@ -264,37 +277,81 @@ public class FinalBoss : MonoBehaviour
             case 3:
                 Spawn360DegreeChargedProjectile();
                 break;
+            case 4:
+                SpawnThreeProjectile();
+                break;
+            case 5:
+                SpawnThreeChargedProjectile();
+                break;
+            case 6:
+                SpawnHugeProjectile();
+                break;
+            case 7:
+                SpawnHugeChargedProjectile();
+                break;
                 // Add cases for more animations if needed
         }
     }
 
     public void SpawnProjectile()
     {
-        Debug.Log("SpawnProjectile");
         Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         Instantiate(FB_Projectile, ShootPosition.position, rotation);
     }
 
+    public void SpawnThreeProjectile()
+    {
+        Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotationPlus20 = Quaternion.AngleAxis(angle + 20f, Vector3.forward);
+        Quaternion rotationMinus20 = Quaternion.AngleAxis(angle - 20f, Vector3.forward);
+        Instantiate(FB_Projectile, ShootPosition.position, rotationPlus20);
+        Instantiate(FB_Projectile, ShootPosition.position, rotationMinus20);
+        Instantiate(FB_Projectile, ShootPosition.position, rotation);
+    }
+
     public void SpawnChargedProjectile() 
     {
-        Debug.Log("SpawnChargedProjectile");
         Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         Instantiate(FB_ChargedProjectile, ShootPosition.position, rotation);
     }
 
+    public void SpawnThreeChargedProjectile() 
+    {
+        Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotationPlus20 = Quaternion.AngleAxis(angle + 20f, Vector3.forward);
+        Quaternion rotationMinus20 = Quaternion.AngleAxis(angle - 20f, Vector3.forward);
+        Instantiate(FB_ChargedProjectile, ShootPosition.position, rotationPlus20);
+        Instantiate(FB_ChargedProjectile, ShootPosition.position, rotationMinus20);
+        Instantiate(FB_ChargedProjectile, ShootPosition.position, rotation);
+    }
+
+    public void SpawnHugeProjectile() 
+    {
+        Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Instantiate(FB_HugeProjectile, ShootPosition.position, rotation);
+    }
+    public void SpawnHugeChargedProjectile()
+    {
+        Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Instantiate(FB_HugeChargedProjectile, ShootPosition.position, rotation);
+    }
+
     public void Spawn360DegreeProjectile()
     {
-        Debug.Log("Spawn360Projectile");
         float angleIncreament = 45f;
         Quaternion[] directions = new Quaternion[8];
-
-        //Vector3 direction = (Player.transform.position - ShootPosition.position).normalized;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         for (int i = 0; i < 8; i++) 
         {
@@ -306,7 +363,6 @@ public class FinalBoss : MonoBehaviour
 
     public void Spawn360DegreeChargedProjectile()
     {
-        Debug.Log("Spawn360DegreeProjectile");
         float angleIncreament = 45f;
         Quaternion[] directions = new Quaternion[8];
 
@@ -318,4 +374,13 @@ public class FinalBoss : MonoBehaviour
             Debug.Log(FB_ChargedProjectile);
         }
     }
+
+    public void LaserCast() 
+    {
+        Debug.Log("Casting Laser");
+        Instantiate(FB_LaserCast, LaserCastTransform.position, Quaternion.identity);
+        Debug.Log(Instantiate(FB_LaserCast, LaserCastTransform.position, Quaternion.identity));
+        //FB_LaserCast.SetActive(true);
+    }
+
 }

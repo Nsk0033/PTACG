@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemySkillMove : MonoBehaviour
 {
-	[SerializeField] private LayerMask objectMask;
+    [SerializeField] private LayerMask objectMask;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float duration = 10f;
     [SerializeField] private int damage = 10;
-	public bool canDestroy = true;
-	
-	private void Start()
+    public bool canDestroy = true;
+    public bool setFalse;
+
+    private void Start()
     {
         Invoke("DisableProjectile", duration);
     }
@@ -31,19 +32,22 @@ public class EnemySkillMove : MonoBehaviour
         if (MyLibrary.CheckLayer(collision.gameObject.layer, objectMask))
         {
             Health playerHealth = collision.GetComponent<Health>();
-			if (playerHealth != null)
-			{
-				playerHealth.TakeDamage(damage);
-				if(canDestroy)
-					Destroy(gameObject);
-			}
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+                if (canDestroy)
+                    Destroy(gameObject);
+            }
             else
-				Destroy(gameObject);
+                Destroy(gameObject);
         }
     }
-	
-	private void DisableProjectile()
+
+    private void DisableProjectile()
     {
-        Destroy(gameObject);
+        if (!setFalse)
+            Destroy(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

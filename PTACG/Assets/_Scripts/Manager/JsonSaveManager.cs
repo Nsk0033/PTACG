@@ -52,7 +52,7 @@ public class JsonSaveManager : MonoBehaviour
             playerData.isStaffOwned = player.GetComponent<CharacterWeapon>().IsStaffOwned;
             playerData.isYamatoOwned = player.GetComponent<CharacterWeapon>().IsYamatoOwned;
 
-            Debug.Log(playerData);
+            //Debug.Log(playerData);
             string jsonWrite = JsonUtility.ToJson(playerData);
             Debug.Log("json write = " + jsonWrite);
 

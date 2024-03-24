@@ -90,28 +90,16 @@ public class UIManager : Singleton<UIManager>
         bossHealth.fillAmount = Mathf.Lerp(bossHealth.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);
 	}
 
-    private IEnumerator BossFight()
-    {
-        bossIntroPanel.SetActive(true);
-        StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 1f, 1f));
-        
-        // Move Camera -> Boss
-        Camera2D.Instance.Target = LevelManager.Instance.Boss;
-        Camera2D.Instance.Offset = new Vector2(0f, -3f);  // Depends on personal setting on Boss location
-        
-        yield return new WaitForSeconds(3f);
-        
-        // Go back to the player
-        Camera2D.Instance.Target = LevelManager.Instance.Player;
-        Camera2D.Instance.Offset = Camera2D.Instance.PlayerOffset;
-        
+    public IEnumerator BossFight()
+    {   
         // Show Boss HealthBar
         StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 1f, 0f, () =>
         {
-            bossIntroPanel.SetActive(false);
+            //bossIntroPanel.SetActive(false);
             bossHealthBarPanel.SetActive(true);
             StartCoroutine(MyLibrary.FadeCanvasGroup(bossHealthBarPanel.GetComponent<CanvasGroup>(), 1f, 1f));
         }));
+        yield return null;
     }
 
     private void OnBossDead()

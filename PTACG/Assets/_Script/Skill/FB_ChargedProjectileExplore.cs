@@ -8,6 +8,7 @@ public class FB_ChargedProjectileExplore : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(explosion);
+        Vector3 explorePosition = transform.position;
+        Instantiate(explosion, explorePosition, Quaternion.identity);
     }
 }

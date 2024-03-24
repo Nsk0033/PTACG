@@ -20,6 +20,8 @@ public class Health : MonoBehaviour
 	[SerializeField] private float damageCooldown = 0.75f; // Cooldown period after taking damage
 	[SerializeField] private bool canTakeDamage = true; // Flag to control if the player can take damage
 	[SerializeField] private float timeToDestroy = 2f;
+    [SerializeField] private GameObject bgm;
+    [SerializeField] private GameObject bgm2;
 
     private Character character;
     private CharacterController controller;
@@ -144,6 +146,9 @@ public class Health : MonoBehaviour
             if (gameObject.CompareTag("Boss")) 
             {
                 gameObject.SetActive(false);
+                bgm.SetActive(false);
+                bgm2.SetActive(true);
+
             }
             else
             {

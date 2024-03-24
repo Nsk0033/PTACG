@@ -93,7 +93,6 @@ MonoBehaviour:
   objectsToSpawn:
   - {fileID: 6973990309801184760, guid: 6607df51aed627545ae9ae42cd11eeec, type: 3}
   - {fileID: 4453734999299587841, guid: d9fa8064f67f6f643b38941ff2ab4c1b, type: 3}
-  - {fileID: 6184849733377351355, guid: 1cf40bb8580888a4593c31eb2b043186, type: 3}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
