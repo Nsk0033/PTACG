@@ -162,9 +162,9 @@ public class Health : MonoBehaviour
                 character.enabled = false;
                 controller.enabled = false;
 
-
+                gameObject.SetActive(false);
             }
-		}
+        }
 
         if (bossBaseShot != null)
         {

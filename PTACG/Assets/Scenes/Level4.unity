@@ -5379,6 +5379,8 @@ MonoBehaviour:
   damageCooldown: 0.75
   canTakeDamage: 1
   timeToDestroy: 2
+  bgm: {fileID: 0}
+  bgm2: {fileID: 0}
 --- !u!114 &453836262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6839,6 +6841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 384200007903321285, guid: 02211a0749b988f48896553a0651dd54, type: 3}
+      propertyPath: sceneName
+      value: Level5
+      objectReference: {fileID: 0}
     - target: {fileID: 2546941309528228851, guid: 02211a0749b988f48896553a0651dd54, type: 3}
       propertyPath: m_Name
       value: Portal
@@ -7443,6 +7449,8 @@ MonoBehaviour:
   damageCooldown: 0.75
   canTakeDamage: 1
   timeToDestroy: 2
+  bgm: {fileID: 0}
+  bgm2: {fileID: 0}
 --- !u!50 &567166090
 Rigidbody2D:
   serializedVersion: 4
@@ -144673,6 +144681,8 @@ MonoBehaviour:
   damageCooldown: 0.75
   canTakeDamage: 1
   timeToDestroy: 2
+  bgm: {fileID: 0}
+  bgm2: {fileID: 0}
 --- !u!114 &1819629061
 MonoBehaviour:
   m_ObjectHideFlags: 0

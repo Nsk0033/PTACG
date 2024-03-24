@@ -45,6 +45,6 @@ public class PauseManager : MonoBehaviour
 	
 	public void GoToLevel1()
 	{
-		//SceneManager.LoadScene("Level1");
+		SceneManager.LoadScene("Level1");
 	}
 }
